@@ -15,6 +15,8 @@
 		C46327A61FC692DA005E6A02 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C46327A51FC692DA005E6A02 /* TestViewController.m */; };
 		C46327A91FC69680005E6A02 /* testModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C46327A81FC69680005E6A02 /* testModel.m */; };
 		C46327AC1FC6968A005E6A02 /* testModel2.m in Sources */ = {isa = PBXBuildFile; fileRef = C46327AB1FC6968A005E6A02 /* testModel2.m */; };
+		C4AD5C551FF0E4DB00F81BC2 /* gaodu.gif in Resources */ = {isa = PBXBuildFile; fileRef = C4AD5C531FF0E4DB00F81BC2 /* gaodu.gif */; };
+		C4AD5C561FF0E4DB00F81BC2 /* zidongcell.gif in Resources */ = {isa = PBXBuildFile; fileRef = C4AD5C541FF0E4DB00F81BC2 /* zidongcell.gif */; };
 		C4E923EF1FE1067300368331 /* GWCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E923EE1FE1067300368331 /* GWCell.m */; };
 		C4FF54461FBEC5BB00F2DD89 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4FF54451FBEC5BB00F2DD89 /* AppDelegate.m */; };
 		C4FF54491FBEC5BB00F2DD89 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4FF54481FBEC5BB00F2DD89 /* ViewController.m */; };
@@ -60,6 +62,8 @@
 		C46327A81FC69680005E6A02 /* testModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = testModel.m; sourceTree = "<group>"; };
 		C46327AA1FC6968A005E6A02 /* testModel2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testModel2.h; sourceTree = "<group>"; };
 		C46327AB1FC6968A005E6A02 /* testModel2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = testModel2.m; sourceTree = "<group>"; };
+		C4AD5C531FF0E4DB00F81BC2 /* gaodu.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gaodu.gif; sourceTree = "<group>"; };
+		C4AD5C541FF0E4DB00F81BC2 /* zidongcell.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = zidongcell.gif; sourceTree = "<group>"; };
 		C4E923ED1FE1067300368331 /* GWCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GWCell.h; sourceTree = "<group>"; };
 		C4E923EE1FE1067300368331 /* GWCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GWCell.m; sourceTree = "<group>"; };
 		C4FF54411FBEC5BB00F2DD89 /* GW_AutoLayoutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GW_AutoLayoutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +143,8 @@
 		C4FF54431FBEC5BB00F2DD89 /* GW_AutoLayoutDemo */ = {
 			isa = PBXGroup;
 			children = (
+				C4AD5C531FF0E4DB00F81BC2 /* gaodu.gif */,
+				C4AD5C541FF0E4DB00F81BC2 /* zidongcell.gif */,
 				C402ADA11FE7B67C0023F092 /* GW_AutoLayoutKit */,
 				C4FF54441FBEC5BB00F2DD89 /* AppDelegate.h */,
 				C4FF54451FBEC5BB00F2DD89 /* AppDelegate.m */,
@@ -270,6 +276,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4FF54511FBEC5BB00F2DD89 /* LaunchScreen.storyboard in Resources */,
+				C4AD5C551FF0E4DB00F81BC2 /* gaodu.gif in Resources */,
+				C4AD5C561FF0E4DB00F81BC2 /* zidongcell.gif in Resources */,
 				C4FF544E1FBEC5BB00F2DD89 /* Assets.xcassets in Resources */,
 				C4FF544C1FBEC5BB00F2DD89 /* Main.storyboard in Resources */,
 			);

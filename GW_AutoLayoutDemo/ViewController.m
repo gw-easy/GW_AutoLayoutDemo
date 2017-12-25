@@ -12,7 +12,7 @@
 #import "TestViewController.h"
 #import "GW_AutoLayout.h"
 @interface ViewController (){
-    UIView  * view1, * view2, * view3;
+    UIView * view2;
     UILabel * lable;
     UILabel * lable1,*lable2,*lable3;
     CGFloat width , height;
@@ -30,21 +30,17 @@
     
     self.navigationItem.title = @"普通高度宽度自动布局";
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    view1 = [UIView new];
+
     view2 = [UIView new];
-    view3 = [UIView new];
     lable = [UILabel new];
     txt = [UILabel new];
     
     [self.view addSubview:txt];
     txt.backgroundColor = [UIColor grayColor];
     
-    view1.backgroundColor = [UIColor orangeColor];
+
     view2.backgroundColor = [UIColor grayColor];
-    view3.backgroundColor = [UIColor redColor];
-    lable.backgroundColor = [UIColor magentaColor];
-    lable.text = @"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+    lable.text = @"UIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormal";
     
     UIButton * btn = [UIButton new];
     [btn setTitle:@"收起" forState:UIControlStateNormal];
@@ -52,10 +48,8 @@
     [btn addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
     btn.backgroundColor = [UIColor orangeColor];
     [self.view addSubview:btn];
-    
-    [self.view addSubview:view1];
+
     [self.view addSubview:view2];
-    [self.view addSubview:view3];
     [view2 addSubview:lable];
     
     btn.GW_TopSpaceToView(5,view2)
@@ -63,21 +57,14 @@
     .GW_RightSpaceEqualView(view2)
     .GW_Height(40);
     
-    /// 一行代码添加约束
-    view1.GW_LeftSpace(10)
-    .GW_TopSpace(74)
-    .GW_WidthEqualView(view2)
-    .GW_Height(150);
     
-    view2.GW_LeftSpaceToView(10,view1)
-    .GW_TopSpaceEqualView(view1)
+    view2.GW_LeftSpace(10)
+    .GW_TopSpace(74)
     .GW_RightSpace(10)
     .GW_HeightAuto();
     
-//    [_l2 whc_ClearLayoutAttrs];
-    
     txt.GW_LeftSpace(10)
-    .GW_TopSpaceToView(10, view1)
+    .GW_TopSpaceToView(10, btn)
     .GW_Height(40)
     .GW_Width(200)
     .GW_LessOrEqual()
@@ -86,7 +73,14 @@
     .GW_GreaterOrEqual();
     
     /// 宽度小于等于200并且大于等于10 约束演示
-    txt.text = @"LessOrEqual";
+    txt.text = @"sdfhisefijiejfisjelfjiejaaajjjjjjjjjjjjjjjaa";
+    
+    /// 一行代码添加约束
+    lable.GW_LeftSpace(10)
+    .GW_RightSpace(10)
+    .GW_TopSpace(10)
+    .GW_HeightAuto()
+    .GW_BottomSpace(10);
     
 }
 
@@ -104,20 +98,6 @@
     }];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    /// 一行代码添加约束
-    lable.GW_LeftSpace(10)
-    .GW_RightSpace(10)
-    .GW_TopSpace(10)
-    .GW_HeightAuto()
-    .GW_BottomSpace(10);
-    
-    [UIView animateWithDuration:0.5 animations:^{
-        [self.view layoutIfNeeded];
-    }];
-    
-}
 
 - (IBAction)urlBtnAction:(id)sender {
     

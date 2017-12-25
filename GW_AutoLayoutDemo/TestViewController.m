@@ -43,9 +43,10 @@
     
     self.navigationItem.rightBarButtonItem = rightItem;
     NSMutableArray *muArr = [NSMutableArray new];
-    for (int i = 0; i<10; i++) {
+    for (int i = 0; i<5; i++) {
         testModel *testM = [testModel new];
         testM.content = @"aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----";
+        testM.opencell = YES;
         [muArr addObject:testM];
     }
     dateSourceArray = muArr;
@@ -127,8 +128,10 @@
         [dateSourceArray removeObjectAtIndex:indexPath.row];
         //删除指定的cell、由于我们的cell事根据数据源动态生成的，所以同时需要删除数据源,添加方法同理
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationFade];
-        
+
         [tableView reloadData];
+        
+        
         
         
     }
