@@ -5,4 +5,4 @@
  
 ## 演示视图
 ![yanshi1](https://raw.githubusercontent.com/gw-update-free/GW_AutoLayoutDemo/master/GW_AutoLayoutDemo/zidongcell.gif)
-![yanshi12](https://raw.githubusercontent.com/gw-update-free/GW_AutoLayoutDemo/master/GW_AutoLayoutDemo/zidongcell.gif)
+![yanshi12](https://raw.githubusercontent.com/gw-update-free/GW_AutoLayoutDemo/master/GW_AutoLayoutDemo/gaodu.gif)
