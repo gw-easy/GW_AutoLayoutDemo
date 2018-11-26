@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		282672A521904B4600E1810E /* Test2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 282672A421904B4600E1810E /* Test2ViewController.m */; };
 		C402ADAC1FE7B67C0023F092 /* GW_StackView.m in Sources */ = {isa = PBXBuildFile; fileRef = C402ADA51FE7B67C0023F092 /* GW_StackView.m */; };
 		C402ADAD1FE7B67C0023F092 /* UITableViewCell+GW_AutoHeightForCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C402ADA71FE7B67C0023F092 /* UITableViewCell+GW_AutoHeightForCell.m */; };
 		C402ADAE1FE7B67C0023F092 /* UIView+GW.m in Sources */ = {isa = PBXBuildFile; fileRef = C402ADA91FE7B67C0023F092 /* UIView+GW.m */; };
@@ -44,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		282672A321904B4600E1810E /* Test2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test2ViewController.h; sourceTree = "<group>"; };
+		282672A421904B4600E1810E /* Test2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test2ViewController.m; sourceTree = "<group>"; };
 		C402ADA21FE7B67C0023F092 /* GW_AutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW_AutoLayout.h; sourceTree = "<group>"; };
 		C402ADA31FE7B67C0023F092 /* GW_AutoLayoutUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW_AutoLayoutUtilities.h; sourceTree = "<group>"; };
 		C402ADA41FE7B67C0023F092 /* GW_StackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW_StackView.h; sourceTree = "<group>"; };
@@ -152,6 +155,8 @@
 				C4FF54481FBEC5BB00F2DD89 /* ViewController.m */,
 				C46327A41FC692DA005E6A02 /* TestViewController.h */,
 				C46327A51FC692DA005E6A02 /* TestViewController.m */,
+				282672A321904B4600E1810E /* Test2ViewController.h */,
+				282672A421904B4600E1810E /* Test2ViewController.m */,
 				C4E923ED1FE1067300368331 /* GWCell.h */,
 				C4E923EE1FE1067300368331 /* GWCell.m */,
 				C409B08D1FE397F800D28505 /* GWTwoCell.h */,
@@ -309,6 +314,7 @@
 				C46327A91FC69680005E6A02 /* testModel.m in Sources */,
 				C4FF54491FBEC5BB00F2DD89 /* ViewController.m in Sources */,
 				C46327AC1FC6968A005E6A02 /* testModel2.m in Sources */,
+				282672A521904B4600E1810E /* Test2ViewController.m in Sources */,
 				C4FF54541FBEC5BB00F2DD89 /* main.m in Sources */,
 				C402ADAD1FE7B67C0023F092 /* UITableViewCell+GW_AutoHeightForCell.m in Sources */,
 				C46327A61FC692DA005E6A02 /* TestViewController.m in Sources */,

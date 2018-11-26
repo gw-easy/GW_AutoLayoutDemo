@@ -10,6 +10,7 @@
 #import "testModel.h"
 #import "testModel2.h"
 #import "TestViewController.h"
+#import "Test2ViewController.h"
 #import "GW_AutoLayout.h"
 @interface ViewController (){
     UIView * view2;
@@ -20,6 +21,7 @@
     UILabel * txt;
 }
 @property (strong, nonatomic) IBOutlet UIView *urlBtn;
+@property (weak, nonatomic) IBOutlet UIButton *btn2;
 
 @end
 
@@ -52,10 +54,7 @@
     [self.view addSubview:view2];
     [view2 addSubview:lable];
     
-    btn.GW_TopSpaceToView(5,view2)
-    .GW_LeftSpaceEqualView(view2)
-    .GW_RightSpaceEqualView(view2)
-    .GW_Height(40);
+    
     
     
     view2.GW_LeftSpace(10)
@@ -63,10 +62,16 @@
     .GW_RightSpace(10)
     .GW_HeightAuto();
     
+    btn.GW_TopSpaceToView(5,view2)
+    .GW_LeftSpaceEqualView(view2)
+    .GW_RightSpaceEqualView(view2)
+    .GW_Height(40);
+    
+    
     txt.GW_LeftSpace(10)
     .GW_TopSpaceToView(10, btn)
     .GW_Height(40)
-    .GW_Width(200)
+    .GW_Width(300)
     .GW_LessOrEqual()
     
     .GW_Width(10)
@@ -80,7 +85,8 @@
     .GW_RightSpace(10)
     .GW_TopSpace(10)
     .GW_HeightAuto()
-    .GW_BottomSpace(10);
+    .GW_BottomSpace(0)
+    ;
     
 }
 
@@ -109,6 +115,14 @@
 
 }
 
+- (IBAction)btn2Action:(id)sender {
+    Test2ViewController *testView = [[Test2ViewController alloc] init];
+    
+    testView.view.backgroundColor = [UIColor grayColor];
+    
+    [self.navigationController pushViewController:testView animated:YES];
+    
+}
 
 
 

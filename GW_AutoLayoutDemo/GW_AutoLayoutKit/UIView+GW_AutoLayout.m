@@ -30,6 +30,7 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
 
 #endif
 
+
 @implementation GW_VIEW (GW_AutoLayout)
 
 - (void)setCurrentConstraint:(NSLayoutConstraint *)currentConstraint {
@@ -1161,6 +1162,150 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
     };
 }
 
+#pragma mark constructionValue
+- (CGFloat)leftConstraintValue{
+    return [self leftConstraint].constant;
+}
+
+- (CGFloat)leftLessConstraintValue{
+    return [self leftLessConstraint].constant;
+}
+
+- (CGFloat)leftGreaterConstraintValue{
+    return [self leftGreaterConstraint].constant;
+}
+
+- (CGFloat)rightConstraintValue{
+    return [self rightConstraint].constant;
+}
+
+- (CGFloat)rightLessConstraintValue{
+    return [self rightLessConstraint].constant;
+}
+
+- (CGFloat)rightGreaterConstraintValue{
+    return [self rightGreaterConstraint].constant;
+}
+
+- (CGFloat)topConstraintValue{
+    return [self topConstraint].constant;
+}
+
+- (CGFloat)topLessConstraintValue{
+    return [self topLessConstraint].constant;
+}
+
+- (CGFloat)topGreaterConstraintValue{
+    return [self topGreaterConstraint].constant;
+}
+
+- (CGFloat)bottomConstraintValue{
+    return [self bottomConstraint].constant;
+}
+
+- (CGFloat)bottomLessConstraintValue{
+    return [self bottomLessConstraint].constant;
+}
+
+- (CGFloat)bottomGreaterConstraintValue{
+    return [self bottomGreaterConstraint].constant;
+}
+
+- (CGFloat)leadingConstraintValue{
+    return [self leadingConstraint].constant;
+}
+
+- (CGFloat)leadingLessConstraintValue{
+    return [self leadingLessConstraint].constant;
+}
+
+- (CGFloat)leadingGreaterConstraintValue{
+    return [self leadingGreaterConstraint].constant;
+}
+
+- (CGFloat)trailingConstraintValue{
+    return [self trailingConstraint].constant;
+}
+
+- (CGFloat)trailingLessConstraintValue{
+    return [self trailingLessConstraint].constant;
+}
+
+- (CGFloat)trailingGreaterConstraintValue{
+    return [self trailingGreaterConstraint].constant;
+}
+
+- (CGFloat)widthConstraintValue{
+    return [self widthConstraint].constant;
+}
+
+- (CGFloat)widthLessConstraintValue{
+    return [self widthLessConstraint].constant;
+}
+
+- (CGFloat)widthGreaterConstraintValue{
+    return [self widthGreaterConstraint].constant;
+}
+
+- (CGFloat)heightConstraintValue{
+    return [self heightConstraint].constant;
+}
+
+- (CGFloat)heightLessConstraintValue{
+    return [self heightLessConstraint].constant;
+}
+
+- (CGFloat)heightGreaterConstraintValue{
+    return [self heightGreaterConstraint].constant;
+}
+
+- (CGFloat)centerXConstraintValue{
+    return [self centerXConstraint].constant;
+}
+
+- (CGFloat)centerXLessConstraintValue{
+    return [self centerXLessConstraint].constant;
+}
+
+- (CGFloat)centerXGreaterConstraintValue{
+    return [self centerXGreaterConstraint].constant;
+}
+
+- (CGFloat)centerYConstraintValue{
+    return [self centerYConstraint].constant;
+}
+
+- (CGFloat)centerYLessConstraintValue{
+    return [self centerYLessConstraint].constant;
+}
+
+- (CGFloat)centerYGreaterConstraintValue{
+    return [self centerYGreaterConstraint].constant;
+}
+
+- (CGFloat)firstBaselineConstraintValue{
+    return [self firstBaselineConstraint].constant;
+}
+
+- (CGFloat)firstBaselineLessConstraintValue{
+    return [self firstBaselineLessConstraint].constant;
+}
+
+- (CGFloat)firstBaselineGreaterConstraintValue{
+    return [self firstBaselineGreaterConstraint].constant;
+}
+
+- (CGFloat)lastBaselineConstraintValue{
+    return [self lastBaselineConstraint].constant;
+}
+
+- (CGFloat)lastBaselineLessConstraintValue{
+    return [self lastBaselineLessConstraint].constant;
+}
+
+- (CGFloat)lastBaselineGreaterConstraintValue{
+    return [self lastBaselineGreaterConstraint].constant;
+}
 #pragma mark - removeConstraint api v1.0 -
 
 - (NSLayoutAttribute)GW_GetMaxLayoutAttribute {

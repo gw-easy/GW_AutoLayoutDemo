@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+
+
 @interface UIView (GW)<CAAnimationDelegate>
 
 @property (nonatomic) CGFloat left;

@@ -8,8 +8,8 @@
 //
 
 
-
-#import "GW_AutoLayout.h"
+#import <UIKit/UIKit.h>
+//#import "GW_AutoLayout.h"
 #import "GW_AutoLayoutUtilities.h"
 /// 布局方向
 typedef NS_OPTIONS(NSUInteger, GW_LayoutOrientationOptions) {
@@ -252,9 +252,111 @@ typedef GW_VIEW * (^FrameEqual)(GW_VIEW * view);
 
 /// frame设置(GW_VIEW * view)
 @property (nonatomic ,copy , readonly)FrameEqual GW_FrameEqualView;
+
 #pragma mark - api version ~ 1.0 -
 
+//[view leftConstraint].content----进行复制修改参数
 
+//- (NSLayoutConstraint *)currentConstraint;
+//布局数据
+- (NSLayoutConstraint *)leftConstraint;
+- (NSLayoutConstraint *)leftLessConstraint;
+- (NSLayoutConstraint *)leftGreaterConstraint;
+
+- (NSLayoutConstraint *)rightConstraint;
+- (NSLayoutConstraint *)rightLessConstraint;
+- (NSLayoutConstraint *)rightGreaterConstraint;
+
+- (NSLayoutConstraint *)topConstraint;
+- (NSLayoutConstraint *)topLessConstraint;
+- (NSLayoutConstraint *)topGreaterConstraint;
+
+- (NSLayoutConstraint *)bottomConstraint;
+- (NSLayoutConstraint *)bottomLessConstraint;
+- (NSLayoutConstraint *)bottomGreaterConstraint;
+
+- (NSLayoutConstraint *)leadingConstraint;
+- (NSLayoutConstraint *)leadingLessConstraint;
+- (NSLayoutConstraint *)leadingGreaterConstraint;
+
+- (NSLayoutConstraint *)trailingConstraint;
+- (NSLayoutConstraint *)trailingLessConstraint;
+- (NSLayoutConstraint *)trailingGreaterConstraint;
+
+- (NSLayoutConstraint *)widthConstraint;
+- (NSLayoutConstraint *)widthLessConstraint;
+- (NSLayoutConstraint *)widthGreaterConstraint ;
+
+- (NSLayoutConstraint *)heightConstraint;
+- (NSLayoutConstraint *)heightLessConstraint;
+- (NSLayoutConstraint *)heightGreaterConstraint;
+
+- (NSLayoutConstraint *)centerXConstraint;
+- (NSLayoutConstraint *)centerXLessConstraint;
+- (NSLayoutConstraint *)centerXGreaterConstraint;
+
+- (NSLayoutConstraint *)centerYConstraint;
+- (NSLayoutConstraint *)centerYLessConstraint;
+- (NSLayoutConstraint *)centerYGreaterConstraint;
+
+- (NSLayoutConstraint *)lastBaselineConstraint;
+- (NSLayoutConstraint *)lastBaselineLessConstraint;
+- (NSLayoutConstraint *)lastBaselineGreaterConstraint;
+
+- (NSLayoutConstraint *)firstBaselineConstraint;
+- (NSLayoutConstraint *)firstBaselineLessConstraint;
+- (NSLayoutConstraint *)firstBaselineGreaterConstraint;
+
+#pragma mark constructionValue
+//@property (assign, nonatomic, readonly) CGFloat currentConstraintValue;
+//各个布局的值
+@property (assign, nonatomic, readonly) CGFloat leftConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat leftLessConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat leftGreaterConstraintValue;
+
+@property (assign, nonatomic, readonly) CGFloat rightConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat rightLessConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat rightGreaterConstraintValue;
+
+@property (assign, nonatomic, readonly) CGFloat topConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat topLessConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat topGreaterConstraintValue;
+
+@property (assign, nonatomic, readonly) CGFloat bottomConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat bottomLessConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat bottomGreaterConstraintValue;
+
+@property (assign, nonatomic, readonly) CGFloat leadingConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat leadingLessConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat leadingGreaterConstraintValue;
+
+@property (assign, nonatomic, readonly) CGFloat trailingConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat trailingLessConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat trailingGreaterConstraintValue;
+
+@property (assign, nonatomic, readonly) CGFloat widthConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat widthLessConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat widthGreaterConstraintValue;
+
+@property (assign, nonatomic, readonly) CGFloat heightConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat heightLessConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat heightGreaterConstraintValue;
+
+@property (assign, nonatomic, readonly) CGFloat centerXConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat centerXLessConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat centerXGreaterConstraintValue;
+
+@property (assign, nonatomic, readonly) CGFloat centerYConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat centerYLessConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat centerYGreaterConstraintValue;
+
+@property (assign, nonatomic, readonly) CGFloat lastBaselineConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat lastBaselineLessConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat lastBaselineGreaterConstraintValue;
+
+@property (assign, nonatomic, readonly) CGFloat firstBaselineConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat firstBaselineLessConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat firstBaselineGreaterConstraintValue;
 /**
  重置缓存的约束,该方法在当前视图对象移除从父视图上可能需要调用清除与父视图之前旧约束缓存对象
  
@@ -1030,4 +1132,7 @@ typedef GW_VIEW * (^FrameEqual)(GW_VIEW * view);
 
 - (GW_VIEW *)GW_AddRightLine:(CGFloat)value lineColor:(UIColor *)color padding:(CGFloat)padding;
 #endif
+
+
+
 @end
