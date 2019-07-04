@@ -9,7 +9,6 @@
 
 
 #import <UIKit/UIKit.h>
-//#import "GW_AutoLayout.h"
 #import "GW_AutoLayoutUtilities.h"
 /// 布局方向
 typedef NS_OPTIONS(NSUInteger, GW_LayoutOrientationOptions) {
@@ -46,16 +45,6 @@ typedef GW_VIEW * (^LeftSpace)(CGFloat value);
 typedef GW_VIEW * (^LeftSpaceToView)(CGFloat value , GW_VIEW * toView);
 typedef GW_VIEW * (^LeftSpaceEqualView)(GW_VIEW * view);
 typedef GW_VIEW * (^LeftSpaceEqualViewOffset)(GW_VIEW * view, CGFloat offset);
-
-typedef GW_VIEW * (^LeadingSpace)(CGFloat value);
-typedef GW_VIEW * (^LeadingSpaceToView)(CGFloat value , GW_VIEW * toView);
-typedef GW_VIEW * (^LeadingSpaceEqualView)(GW_VIEW * view);
-typedef GW_VIEW * (^LeadingSpaceEqualViewOffset)(GW_VIEW * view, CGFloat offset);
-
-typedef GW_VIEW * (^TrailingSpace)(CGFloat value);
-typedef GW_VIEW * (^TrailingSpaceToView)(CGFloat value , GW_VIEW * toView);
-typedef GW_VIEW * (^TrailingSpaceEqualView)(GW_VIEW * view);
-typedef GW_VIEW * (^TrailingSpaceEqualViewOffset)(GW_VIEW * view, CGFloat offset);
 
 typedef GW_VIEW * (^BaseLineSpace)(CGFloat value);
 typedef GW_VIEW * (^BaseLineSpaceToView)(CGFloat value , GW_VIEW * toView);
@@ -102,7 +91,7 @@ typedef GW_VIEW * (^size)(CGFloat width, CGFloat height);
 typedef GW_VIEW * (^SizeEqual)(GW_VIEW * view);
 
 typedef GW_VIEW * (^FrameEqual)(GW_VIEW * view);
-
+typedef GW_VIEW * (^BoundsEqual)(GW_VIEW * view);
 #pragma mark - UI自动布局 -
 
 @interface GW_VIEW (GW_AutoLayout)
@@ -144,24 +133,6 @@ typedef GW_VIEW * (^FrameEqual)(GW_VIEW * view);
 /// 与视图view左边间距相等并偏移offset(GW_VIEW * view, CGFloat offset)
 @property (nonatomic ,copy , readonly)LeftSpaceEqualViewOffset GW_LeftSpaceEqualViewOffset;
 
-/// 与父视图左边间距(CGFloat value)
-@property (nonatomic ,copy , readonly)LeadingSpace GW_LeadingSpace;
-/// 与相对视图toView左边间距(CGFloat value,GW_VIEW * toView)
-@property (nonatomic ,copy , readonly)LeadingSpaceToView GW_LeadingSpaceToView;
-/// 与视图view左边间距相等(GW_VIEW * view)
-@property (nonatomic ,copy , readonly)LeadingSpaceEqualView GW_LeadingSpaceEqualView;
-/// 与视图view左边间距相等并偏移offset (GW_VIEW * view, CGFloat offset)
-@property (nonatomic ,copy , readonly)LeadingSpaceEqualViewOffset GW_LeadingSpaceEqualViewOffset;
-
-/// 与父视图右边间距(CGFloat value)
-@property (nonatomic ,copy , readonly)TrailingSpace GW_TrailingSpace;
-/// 与相对视图toView右边间距(CGFloat value,GW_VIEW * toView)
-@property (nonatomic ,copy , readonly)TrailingSpaceToView GW_TrailingSpaceToView;
-/// 与视图view右边间距相等(GW_VIEW * view)
-@property (nonatomic ,copy , readonly)TrailingSpaceEqualView GW_TrailingSpaceEqualView;
-/// 与视图view右边间距相等并偏移offset(GW_VIEW * view, CGFloat offset)
-@property (nonatomic ,copy , readonly)TrailingSpaceEqualViewOffset GW_TrailingSpaceEqualViewOffset;
-
 #if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
 /// 与父视图底边间距Y(CGFloat value)
 @property (nonatomic ,copy , readonly)BaseLineSpace GW_FirstBaseLine;
@@ -181,6 +152,7 @@ typedef GW_VIEW * (^FrameEqual)(GW_VIEW * view);
 @property (nonatomic ,copy , readonly)BaseLineSpaceEqualView GW_LastBaseLineEqualView;
 /// 与视图view底边间距Y相等并偏移offset(GW_VIEW * view, CGFloat offset)
 @property (nonatomic ,copy , readonly)BaseLineSpaceEqualViewOffset GW_LastBaseLineEqualViewOffset;
+
 /// 与父视图右边间距(CGFloat value)
 @property (nonatomic ,copy , readonly)RightSpace GW_RightSpace;
 /// 与相对视图toView右边间距(CGFloat value,GW_VIEW * toView)
@@ -201,7 +173,7 @@ typedef GW_VIEW * (^FrameEqual)(GW_VIEW * view);
 
 /// 与父视图底边间距(CGFloat value)
 @property (nonatomic ,copy , readonly)BottomSpace GW_BottomSpace;
-/// 与相对视图toView底边间距(CGFloat value,GW_VIEW * toView)
+/// 与相对视图toView底边间距(CGFloat value,GW_VIEW * toView) self:bottom -> toView:top
 @property (nonatomic ,copy , readonly)BottomSpaceToView GW_BottomSpaceToView;
 /// 与相对视图toView底边间距相等(GW_VIEW * toView)
 @property (nonatomic ,copy , readonly)BottomSpaceEqualView GW_BottomSpaceEqualView;
@@ -253,6 +225,8 @@ typedef GW_VIEW * (^FrameEqual)(GW_VIEW * view);
 /// frame设置(GW_VIEW * view)
 @property (nonatomic ,copy , readonly)FrameEqual GW_FrameEqualView;
 
+/// bounds设置(GW_VIEW * view)
+@property (nonatomic ,copy , readonly)BoundsEqual GW_BoundsEqualView;
 #pragma mark - api version ~ 1.0 -
 
 //[view leftConstraint].content----进行复制修改参数
@@ -274,14 +248,6 @@ typedef GW_VIEW * (^FrameEqual)(GW_VIEW * view);
 - (NSLayoutConstraint *)bottomConstraint;
 - (NSLayoutConstraint *)bottomLessConstraint;
 - (NSLayoutConstraint *)bottomGreaterConstraint;
-
-- (NSLayoutConstraint *)leadingConstraint;
-- (NSLayoutConstraint *)leadingLessConstraint;
-- (NSLayoutConstraint *)leadingGreaterConstraint;
-
-- (NSLayoutConstraint *)trailingConstraint;
-- (NSLayoutConstraint *)trailingLessConstraint;
-- (NSLayoutConstraint *)trailingGreaterConstraint;
 
 - (NSLayoutConstraint *)widthConstraint;
 - (NSLayoutConstraint *)widthLessConstraint;
@@ -325,14 +291,6 @@ typedef GW_VIEW * (^FrameEqual)(GW_VIEW * view);
 @property (assign, nonatomic, readonly) CGFloat bottomConstraintValue;
 @property (assign, nonatomic, readonly) CGFloat bottomLessConstraintValue;
 @property (assign, nonatomic, readonly) CGFloat bottomGreaterConstraintValue;
-
-@property (assign, nonatomic, readonly) CGFloat leadingConstraintValue;
-@property (assign, nonatomic, readonly) CGFloat leadingLessConstraintValue;
-@property (assign, nonatomic, readonly) CGFloat leadingGreaterConstraintValue;
-
-@property (assign, nonatomic, readonly) CGFloat trailingConstraintValue;
-@property (assign, nonatomic, readonly) CGFloat trailingLessConstraintValue;
-@property (assign, nonatomic, readonly) CGFloat trailingGreaterConstraintValue;
 
 @property (assign, nonatomic, readonly) CGFloat widthConstraintValue;
 @property (assign, nonatomic, readonly) CGFloat widthLessConstraintValue;
@@ -471,7 +429,6 @@ typedef GW_VIEW * (^FrameEqual)(GW_VIEW * view);
  */
 - (GW_VIEW *)GW_LeftSpace:(CGFloat)leftSpace;
 
-
 /**
  设置左边距
 
@@ -533,75 +490,6 @@ typedef GW_VIEW * (^FrameEqual)(GW_VIEW * view);
 - (GW_VIEW *)GW_RightSpaceEqualView:(GW_VIEW *)view offset:(CGFloat)offset;
 
 /**
- 设置左对齐(默认相对父视图)
-
- @param leadingSpace 左边距
- @return 返回当前视图
- */
-- (GW_VIEW *)GW_LeadingSpace:(CGFloat)leadingSpace;
-
-/**
- 设置左对齐
- 
- @param leadingSpace 左边距
- @param toView 相对视图
- @return 返回当前视图
- */
-
-- (GW_VIEW *)GW_LeadingSpace:(CGFloat)leadingSpace toView:(GW_VIEW *)toView;
-
-/**
- 设置左对齐边距与某视图左对齐边距相等
-
- @param view 相对视图
- @return 返回当前视图
- */
-- (GW_VIEW *)GW_LeadingSpaceEqualView:(GW_VIEW *)view;
-
-/**
- 设置左对齐边距与某视图左对齐边距相等并偏移offset
-
- @param view 相对视图
- @param offset 偏移量
- @return 返回当前视图
- */
-- (GW_VIEW *)GW_LeadingSpaceEqualView:(GW_VIEW *)view offset:(CGFloat)offset;
-
-/**
- 设置右对齐(默认相对父视图)
-
- @param trailingSpace 右边距
- @return 返回当前视图
- */
-- (GW_VIEW *)GW_TrailingSpace:(CGFloat)trailingSpace;
-
-/**
- 设置右对齐
-
- @param trailingSpace 右边距
- @param toView 相对视图
- @return 返回当前视图
- */
-- (GW_VIEW *)GW_TrailingSpace:(CGFloat)trailingSpace toView:(GW_VIEW *)toView;
-
-/**
- 设置右对齐边距与某视图右对齐边距相等
-
- @param view 相对视图
- @return 返回当前视图
- */
-- (GW_VIEW *)GW_TrailingSpaceEqualView:(GW_VIEW *)view;
-
-/**
- 设置右对齐边距与某视图右对齐边距相等并偏移offset
-
- @param view 相对视图
- @param offset 偏移量
- @return 返回当前视图
- */
-- (GW_VIEW *)GW_TrailingSpaceEqualView:(GW_VIEW *)view offset:(CGFloat)offset;
-
-/**
  设置顶边距(默认相对父视图)
 
  @param topSpace 顶边距
@@ -644,10 +532,10 @@ typedef GW_VIEW * (^FrameEqual)(GW_VIEW * view);
 - (GW_VIEW *)GW_BottomSpace:(CGFloat)bottomSpace;
 
 /**
- 设置底边距
+ 设置self:bottom -> toView:top的距离
 
  @param bottomSpace 底边距
- @param toView 相对视图
+ @param toView 相对视图 top
  @return 返回当前视图
  */
 - (GW_VIEW *)GW_BottomSpace:(CGFloat)bottomSpace toView:(GW_VIEW *)toView;
@@ -689,7 +577,7 @@ typedef GW_VIEW * (^FrameEqual)(GW_VIEW * view);
  设置宽度与视图view相等
 
  @param view 相对视图
- @param ratio 比例
+ @param ratio 缩放比例
  @return 返回当前视图
  */
 - (GW_VIEW *)GW_WidthEqualView:(GW_VIEW *)view ratio:(CGFloat)ratio;
@@ -993,6 +881,13 @@ typedef GW_VIEW * (^FrameEqual)(GW_VIEW * view);
  @return 返回当前视图
  */
 - (GW_VIEW *)GW_FrameEqualView:(GW_VIEW *)view;
+
+/**
+ 设置视图Bounds等于view - point是（0，0）
+ @param view 相对视图
+ @return 返回当前视图
+ */
+- (GW_VIEW *)GW_BoundsEqualView:(GW_VIEW *)view;
 
 #if TARGET_OS_IPHONE || TARGET_OS_TV
 

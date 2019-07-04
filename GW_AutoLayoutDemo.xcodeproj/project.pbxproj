@@ -117,10 +117,10 @@
 				C402ADA51FE7B67C0023F092 /* GW_StackView.m */,
 				C402ADA61FE7B67C0023F092 /* UITableViewCell+GW_AutoHeightForCell.h */,
 				C402ADA71FE7B67C0023F092 /* UITableViewCell+GW_AutoHeightForCell.m */,
-				C402ADA81FE7B67C0023F092 /* UIView+GW.h */,
-				C402ADA91FE7B67C0023F092 /* UIView+GW.m */,
 				C402ADAA1FE7B67C0023F092 /* UIView+GW_AutoLayout.h */,
 				C402ADAB1FE7B67C0023F092 /* UIView+GW_AutoLayout.m */,
+				C402ADA81FE7B67C0023F092 /* UIView+GW.h */,
+				C402ADA91FE7B67C0023F092 /* UIView+GW.m */,
 			);
 			path = GW_AutoLayoutKit;
 			sourceTree = "<group>";
