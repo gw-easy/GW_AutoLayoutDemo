@@ -236,102 +236,6 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
     return objc_getAssociatedObject(self, _cmd);
 }
 
-- (void)setLeadingConstraint:(NSLayoutConstraint *)leadingConstraint relation:(NSLayoutRelation)relation {
-    switch (relation) {
-        case NSLayoutRelationLessThanOrEqual:
-            [self setLeadingLessConstraint:leadingConstraint];
-            break;
-        case NSLayoutRelationGreaterThanOrEqual:
-            [self setLeadingGreaterConstraint:leadingConstraint];
-        default:
-            [self setLeadingConstraint:leadingConstraint];
-            break;
-    }
-}
-
-- (NSLayoutConstraint *)leadingConstraintRelation:(NSLayoutRelation)relation {
-    switch (relation) {
-        case NSLayoutRelationGreaterThanOrEqual:
-            return [self leadingGreaterConstraint];
-        case NSLayoutRelationLessThanOrEqual:
-            return [self leadingLessConstraint];
-        default:
-            return [self leadingConstraint];
-    }
-}
-
-- (void)setLeadingConstraint:(NSLayoutConstraint *)leadingConstraint {
-    objc_setAssociatedObject(self, @selector(leadingConstraint), leadingConstraint, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (NSLayoutConstraint *)leadingConstraint {
-    return objc_getAssociatedObject(self, _cmd);
-}
-
-- (void)setLeadingLessConstraint:(NSLayoutConstraint *)leadingConstraint {
-    objc_setAssociatedObject(self, @selector(leadingLessConstraint), leadingConstraint, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (NSLayoutConstraint *)leadingLessConstraint {
-    return objc_getAssociatedObject(self, _cmd);
-}
-
-- (void)setLeadingGreaterConstraint:(NSLayoutConstraint *)leadingConstraint {
-    objc_setAssociatedObject(self, @selector(leadingGreaterConstraint), leadingConstraint, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (NSLayoutConstraint *)leadingGreaterConstraint {
-    return objc_getAssociatedObject(self, _cmd);
-}
-
-- (void)setTrailingConstraint:(NSLayoutConstraint *)trailingConstraint relation:(NSLayoutRelation)relation {
-    switch (relation) {
-        case NSLayoutRelationLessThanOrEqual:
-            [self setTrailingLessConstraint:trailingConstraint];
-            break;
-        case NSLayoutRelationGreaterThanOrEqual:
-            [self setTrailingGreaterConstraint:trailingConstraint];
-        default:
-            [self setTrailingConstraint:trailingConstraint];
-            break;
-    }
-}
-
-- (NSLayoutConstraint *)trailingConstraintRelation:(NSLayoutRelation)relation {
-    switch (relation) {
-        case NSLayoutRelationGreaterThanOrEqual:
-            return [self trailingGreaterConstraint];
-        case NSLayoutRelationLessThanOrEqual:
-            return [self trailingLessConstraint];
-        default:
-            return [self trailingConstraint];
-    }
-}
-
-- (void)setTrailingConstraint:(NSLayoutConstraint *)trailingConstraint {
-    objc_setAssociatedObject(self, @selector(trailingConstraint), trailingConstraint, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (NSLayoutConstraint *)trailingConstraint {
-    return objc_getAssociatedObject(self, _cmd);
-}
-
-- (void)setTrailingLessConstraint:(NSLayoutConstraint *)trailingConstraint {
-    objc_setAssociatedObject(self, @selector(trailingLessConstraint), trailingConstraint, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (NSLayoutConstraint *)trailingLessConstraint {
-    return objc_getAssociatedObject(self, _cmd);
-}
-
-- (void)setTrailingGreaterConstraint:(NSLayoutConstraint *)trailingConstraint {
-    objc_setAssociatedObject(self, @selector(trailingGreaterConstraint), trailingConstraint, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (NSLayoutConstraint *)trailingGreaterConstraint {
-    return objc_getAssociatedObject(self, _cmd);
-}
-
 - (void)setWidthConstraint:(NSLayoutConstraint *)widthConstraint relation:(NSLayoutRelation)relation {
     switch (relation) {
         case NSLayoutRelationLessThanOrEqual:
@@ -783,70 +687,6 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
     };
 }
 
-- (LeadingSpace)GW_LeadingSpace {
-    __weak typeof(self) weakSelf = self;
-    return ^(CGFloat space) {
-        [weakSelf GW_LeadingSpace:space];
-        return weakSelf;
-    };
-}
-
-- (LeadingSpaceToView)GW_LeadingSpaceToView {
-    __weak typeof(self) weakSelf = self;
-    return ^(CGFloat value , GW_VIEW * toView) {
-        [weakSelf GW_LeadingSpace:value toView:toView];
-        return weakSelf;
-    };
-}
-
-- (LeadingSpaceEqualView)GW_LeadingSpaceEqualView {
-    __weak typeof(self) weakSelf = self;
-    return ^(GW_VIEW * view) {
-        [weakSelf GW_LeadingSpaceEqualView:view];
-        return weakSelf;
-    };
-}
-
-- (LeadingSpaceEqualViewOffset)GW_LeadingSpaceEqualViewOffset {
-    __weak typeof(self) weakSelf = self;
-    return ^(GW_VIEW * view, CGFloat offset) {
-        [weakSelf GW_LeadingSpaceEqualView:view offset:offset];
-        return weakSelf;
-    };
-}
-
-- (TrailingSpace)GW_TrailingSpace {
-    __weak typeof(self) weakSelf = self;
-    return ^(CGFloat space) {
-        [weakSelf GW_TrailingSpace:space];
-        return weakSelf;
-    };
-}
-
-- (TrailingSpaceToView)GW_TrailingSpaceToView {
-    __weak typeof(self) weakSelf = self;
-    return ^(CGFloat value , GW_VIEW * toView) {
-        [weakSelf GW_TrailingSpace:value toView:toView];
-        return weakSelf;
-    };
-}
-
-- (TrailingSpaceEqualView)GW_TrailingSpaceEqualView {
-    __weak typeof(self) weakSelf = self;
-    return ^(GW_VIEW * view) {
-        [weakSelf GW_TrailingSpaceEqualView:view];
-        return weakSelf;
-    };
-}
-
-- (TrailingSpaceEqualViewOffset)GW_TrailingSpaceEqualViewOffset {
-    __weak typeof(self) weakSelf = self;
-    return ^(GW_VIEW * view, CGFloat offset) {
-        [weakSelf GW_TrailingSpaceEqualView:view offset:offset];
-        return weakSelf;
-    };
-}
-
 #if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
 - (BaseLineSpace)GW_FirstBaseLine {
     __weak typeof(self) weakSelf = self;
@@ -1162,6 +1002,14 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
     };
 }
 
+- (BoundsEqual)GW_BoundsEqualView {
+    __weak typeof(self) weakSelf = self;
+    return ^(GW_VIEW * view) {
+        [weakSelf GW_BoundsEqualView:view];
+        return weakSelf;
+    };
+}
+
 #pragma mark constructionValue
 - (CGFloat)leftConstraintValue{
     return [self leftConstraint].constant;
@@ -1209,30 +1057,6 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
 
 - (CGFloat)bottomGreaterConstraintValue{
     return [self bottomGreaterConstraint].constant;
-}
-
-- (CGFloat)leadingConstraintValue{
-    return [self leadingConstraint].constant;
-}
-
-- (CGFloat)leadingLessConstraintValue{
-    return [self leadingLessConstraint].constant;
-}
-
-- (CGFloat)leadingGreaterConstraintValue{
-    return [self leadingGreaterConstraint].constant;
-}
-
-- (CGFloat)trailingConstraintValue{
-    return [self trailingConstraint].constant;
-}
-
-- (CGFloat)trailingLessConstraintValue{
-    return [self trailingLessConstraint].constant;
-}
-
-- (CGFloat)trailingGreaterConstraintValue{
-    return [self trailingGreaterConstraint].constant;
 }
 
 - (CGFloat)widthConstraintValue{
@@ -1353,7 +1177,7 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
     GW_VIEW * view = nil;
     switch (attribute) {
 #if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
-        case NSLayoutAttributeFirstBaseline:
+        case NSLayoutAttributeFirstBaseline:{
             constraint = [self firstBaselineConstraint];
             if (constraint) {
                 view = [self GW_MainViewConstraint:constraint];
@@ -1372,9 +1196,10 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
                 if (view) [view removeConstraint:constraint];
                 [self setFirstBaselineGreaterConstraint:nil];
             }
+        }
             break;
 #endif
-        case NSLayoutAttributeLastBaseline:
+        case NSLayoutAttributeLastBaseline:{
             constraint = [self lastBaselineConstraint];
             if (constraint) {
                 view = [self GW_MainViewConstraint:constraint];
@@ -1393,8 +1218,9 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
                 if (view) [view removeConstraint:constraint];
                 [self setLastBaselineGreaterConstraint:nil];
             }
+        }
             break;
-        case NSLayoutAttributeCenterY:
+        case NSLayoutAttributeCenterY:{
             constraint = [self centerYConstraint];
             if (constraint) {
                 view = [self GW_MainViewConstraint:constraint];
@@ -1413,8 +1239,9 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
                 if (view) [view removeConstraint:constraint];
                 [self setCenterYGreaterConstraint:nil];
             }
+        }
             break;
-        case NSLayoutAttributeCenterX:
+        case NSLayoutAttributeCenterX:{
             constraint = [self centerXConstraint];
             if (constraint) {
                 view = [self GW_MainViewConstraint:constraint];
@@ -1433,48 +1260,9 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
                 if (view) [view removeConstraint:constraint];
                 [self setCenterXGreaterConstraint:nil];
             }
+        }
             break;
-        case NSLayoutAttributeTrailing:
-            constraint = [self trailingConstraint];
-            if (constraint) {
-                view = [self GW_MainViewConstraint:constraint];
-                if (view) [view removeConstraint:constraint];
-                [self setTrailingConstraint:nil];
-            }
-            constraint = [self trailingLessConstraint];
-            if (constraint) {
-                view = [self GW_MainViewConstraint:constraint];
-                if (view) [view removeConstraint:constraint];
-                [self setTrailingLessConstraint:nil];
-            }
-            constraint = [self trailingGreaterConstraint];
-            if (constraint) {
-                view = [self GW_MainViewConstraint:constraint];
-                if (view) [view removeConstraint:constraint];
-                [self setTrailingGreaterConstraint:nil];
-            }
-            break;
-        case NSLayoutAttributeLeading:
-            constraint = [self leadingConstraint];
-            if (constraint) {
-                view = [self GW_MainViewConstraint:constraint];
-                if (view) [view removeConstraint:constraint];
-                [self setLeadingConstraint:nil];
-            }
-            constraint = [self leadingLessConstraint];
-            if (constraint) {
-                view = [self GW_MainViewConstraint:constraint];
-                if (view) [view removeConstraint:constraint];
-                [self setLeadingLessConstraint:nil];
-            }
-            constraint = [self leadingGreaterConstraint];
-            if (constraint) {
-                view = [self GW_MainViewConstraint:constraint];
-                if (view) [view removeConstraint:constraint];
-                [self setLeadingGreaterConstraint:nil];
-            }
-            break;
-        case NSLayoutAttributeBottom:
+        case NSLayoutAttributeBottom:{
             constraint = [self bottomConstraint];
             if (constraint) {
                 view = [self GW_MainViewConstraint:constraint];
@@ -1493,8 +1281,9 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
                 if (view) [view removeConstraint:constraint];
                 [self setBottomGreaterConstraint:nil];
             }
+        }
             break;
-        case NSLayoutAttributeTop:
+        case NSLayoutAttributeTop:{
             constraint = [self topConstraint];
             if (constraint) {
                 view = [self GW_MainViewConstraint:constraint];
@@ -1513,8 +1302,9 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
                 if (view) [view removeConstraint:constraint];
                 [self setTopGreaterConstraint:nil];
             }
+        }
             break;
-        case NSLayoutAttributeRight:
+        case NSLayoutAttributeRight:{
             constraint = [self rightConstraint];
             if (constraint) {
                 view = [self GW_MainViewConstraint:constraint];
@@ -1533,8 +1323,9 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
                 if (view) [view removeConstraint:constraint];
                 [self setRightGreaterConstraint:nil];
             }
+        }
             break;
-        case NSLayoutAttributeLeft:
+        case NSLayoutAttributeLeft:{
             constraint = [self leftConstraint];
             if (constraint) {
                 view = [self GW_MainViewConstraint:constraint];
@@ -1553,8 +1344,9 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
                 if (view) [view removeConstraint:constraint];
                 [self setLeftGreaterConstraint:nil];
             }
+        }
             break;
-        case NSLayoutAttributeWidth:
+        case NSLayoutAttributeWidth:{
             constraint = [self widthConstraint];
             if (constraint) {
                 view = [self GW_MainViewConstraint:constraint];
@@ -1573,8 +1365,9 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
                 if (view) [view removeConstraint:constraint];
                 [self setWidthGreaterConstraint:nil];
             }
+        }
             break;
-        case NSLayoutAttributeHeight:
+        case NSLayoutAttributeHeight:{
             constraint = [self heightConstraint];
             if (constraint) {
                 view = [self GW_MainViewConstraint:constraint];
@@ -1593,6 +1386,7 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
                 if (view) [view removeConstraint:constraint];
                 [self setHeightGreaterConstraint:nil];
             }
+        }
             break;
         default:
             break;
@@ -1748,48 +1542,6 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
     if (mainView) {
         [mainView removeConstraint:constraint];
         [self setCenterXGreaterConstraint:nil];
-    }
-    
-    constraint = [self trailingConstraint];
-    mainView = getMainView(constraint);
-    if (mainView) {
-        [mainView removeConstraint:constraint];
-        [self setTrailingConstraint:nil];
-    }
-
-    constraint = [self trailingLessConstraint];
-    mainView = getMainView(constraint);
-    if (mainView) {
-        [mainView removeConstraint:constraint];
-        [self setTrailingLessConstraint:nil];
-    }
-    
-    constraint = [self trailingGreaterConstraint];
-    mainView = getMainView(constraint);
-    if (mainView) {
-        [mainView removeConstraint:constraint];
-        [self setTrailingGreaterConstraint:nil];
-    }
-    
-    constraint = [self leadingConstraint];
-    mainView = getMainView(constraint);
-    if (mainView) {
-        [mainView removeConstraint:constraint];
-        [self setLeadingConstraint:nil];
-    }
-
-    constraint = [self leadingLessConstraint];
-    mainView = getMainView(constraint);
-    if (mainView) {
-        [mainView removeConstraint:constraint];
-        [self setLeadingLessConstraint:nil];
-    }
-    
-    constraint = [self leadingGreaterConstraint];
-    mainView = getMainView(constraint);
-    if (mainView) {
-        [mainView removeConstraint:constraint];
-        [self setLeadingGreaterConstraint:nil];
     }
     
     constraint = [self bottomConstraint];
@@ -2162,76 +1914,6 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
                         constant:0.0 - offset];
 }
 
-- (GW_VIEW *)GW_LeadingSpace:(CGFloat)leadingSpace {
-    return [self GW_ConstraintWithItem:self.superview
-                       attribute:NSLayoutAttributeLeading
-                        constant:leadingSpace];
-}
-
-- (GW_VIEW *)GW_LeadingSpace:(CGFloat)leadingSpace
-            toView:(GW_VIEW *)toView {
-    NSLayoutAttribute toAttribute = NSLayoutAttributeTrailing;
-    if (![self sameSuperviewWithView1:toView view2:self]) {
-        toAttribute = NSLayoutAttributeLeading;
-    }
-    return [self GW_ConstraintWithItem:self
-                       attribute:NSLayoutAttributeLeading
-                       relatedBy:NSLayoutRelationEqual
-                          toItem:toView
-                       attribute:toAttribute
-                      multiplier:1
-                        constant:leadingSpace];
-}
-
-- (GW_VIEW *)GW_LeadingSpaceEqualView:(GW_VIEW *)view {
-    return [self GW_LeadingSpaceEqualView:view offset:0];
-}
-
-- (GW_VIEW *)GW_LeadingSpaceEqualView:(GW_VIEW *)view offset:(CGFloat)offset {
-    return [self GW_ConstraintWithItem:self
-                       attribute:NSLayoutAttributeLeading
-                       relatedBy:NSLayoutRelationEqual
-                          toItem:view
-                       attribute:NSLayoutAttributeLeading
-                      multiplier:1
-                        constant:offset];
-}
-
-- (GW_VIEW *)GW_TrailingSpace:(CGFloat)trailingSpace {
-    return [self GW_ConstraintWithItem:self.superview
-                       attribute:NSLayoutAttributeTrailing
-                        constant:0.0 - trailingSpace];
-}
-
-- (GW_VIEW *)GW_TrailingSpace:(CGFloat)trailingSpace
-             toView:(GW_VIEW *)toView {
-    NSLayoutAttribute toAttribute = NSLayoutAttributeLeading;
-    if (![self sameSuperviewWithView1:toView view2:self]) {
-        toAttribute = NSLayoutAttributeTrailing;
-    }
-    return [self GW_ConstraintWithItem:self
-                       attribute:NSLayoutAttributeTrailing
-                       relatedBy:NSLayoutRelationEqual
-                          toItem:toView
-                       attribute:toAttribute
-                      multiplier:1
-                        constant:0.0 - trailingSpace];
-}
-
-- (GW_VIEW *)GW_TrailingSpaceEqualView:(GW_VIEW *)view {
-    return [self GW_TrailingSpaceEqualView:view offset:0];
-}
-
-- (GW_VIEW *)GW_TrailingSpaceEqualView:(GW_VIEW *)view offset:(CGFloat)offset {
-    return [self GW_ConstraintWithItem:self
-                       attribute:NSLayoutAttributeTrailing
-                       relatedBy:NSLayoutRelationEqual
-                          toItem:view
-                       attribute:NSLayoutAttributeTrailing
-                      multiplier:1
-                        constant:0.0 - offset];
-}
-
 - (GW_VIEW *)GW_TopSpace:(CGFloat)topSpace {
     return [self GW_ConstraintWithItem:self.superview
                        attribute:NSLayoutAttributeTop
@@ -2273,11 +1955,15 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
 }
 
 - (GW_VIEW *)GW_BottomSpace:(CGFloat)bottomSpace toView:(GW_VIEW *)toView {
+    NSLayoutAttribute toAttribute = NSLayoutAttributeTop;
+    if (![self sameSuperviewWithView1:toView view2:self]) {
+        toAttribute = NSLayoutAttributeBottom;
+    }
     return [self GW_ConstraintWithItem:self
                        attribute:NSLayoutAttributeBottom
                        relatedBy:NSLayoutRelationEqual
                           toItem:toView
-                       attribute:NSLayoutAttributeTop
+                       attribute:toAttribute
                       multiplier:1
                         constant:bottomSpace];
 }
@@ -2528,6 +2214,12 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
     return [self GW_SizeEqualView:view];
 }
 
+- (GW_VIEW *)GW_BoundsEqualView:(GW_VIEW *)view {
+    [self GW_LeftSpace:0 toView:view];
+    [self GW_TopSpace:0 toView:view];
+    return [self GW_SizeEqualView:view];
+}
+
 - (GW_VIEW *)GW_Frame:(CGFloat)left top:(CGFloat)top width:(CGFloat)width height:(CGFloat)height toView:(GW_VIEW *)toView {
     [self GW_LeftSpace:left toView:toView];
     [self GW_TopSpace:top toView:toView];
@@ -2660,21 +2352,6 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
     }
     switch (attribute) {
         case NSLayoutAttributeLeft: {
-            NSLayoutConstraint * leading = [self leadingConstraint];
-            if (leading) {
-                [superView removeConstraint:leading];
-                [self setLeadingConstraint:nil];
-            }
-            leading = [self leadingLessConstraint];
-            if (leading) {
-                [superView removeConstraint:leading];
-                [self setLeadingLessConstraint:nil];
-            }
-            leading = [self leadingGreaterConstraint];
-            if (leading) {
-                [superView removeConstraint:leading];
-                [self setLeadingGreaterConstraint:nil];
-            }
             NSLayoutConstraint * left = [self leftConstraintRelation:related];
             if (left) {
                 if (left.firstAttribute == attribute &&
@@ -2692,21 +2369,6 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
         }
             break;
         case NSLayoutAttributeRight: {
-            NSLayoutConstraint * trailing = [self trailingConstraint];
-            if (trailing) {
-                [superView removeConstraint:trailing];
-                [self setTrailingConstraint:nil];
-            }
-            trailing = [self trailingLessConstraint];
-            if (trailing) {
-                [superView removeConstraint:trailing];
-                [self setTrailingLessConstraint:nil];
-            }
-            trailing = [self trailingGreaterConstraint];
-            if (trailing) {
-                [superView removeConstraint:trailing];
-                [self setTrailingGreaterConstraint:nil];
-            }
             NSLayoutConstraint * right = [self rightConstraintRelation:related];
             if (right) {
                 if (right.firstAttribute == attribute &&
@@ -2784,70 +2446,6 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
                 }
                 [superView removeConstraint:bottom];
                 [self setBottomConstraint:nil relation:related];
-            }
-        }
-            break;
-        case NSLayoutAttributeLeading: {
-            NSLayoutConstraint * left = [self leftConstraint];
-            if (left) {
-                [superView removeConstraint:left];
-                [self setLeftConstraint:nil];
-            }
-            left = [self leftLessConstraint];
-            if (left) {
-                [superView removeConstraint:left];
-                [self setLeftLessConstraint:nil];
-            }
-            left = [self leftGreaterConstraint];
-            if (left) {
-                [superView removeConstraint:left];
-                [self setLeftGreaterConstraint:nil];
-            }
-            NSLayoutConstraint * leading = [self leadingConstraintRelation:related];
-            if (leading) {
-                if (leading.firstAttribute == attribute &&
-                    leading.secondAttribute == toAttribute &&
-                    leading.firstItem == item &&
-                    leading.secondItem == toItem &&
-                    leading.relation == related &&
-                    leading.multiplier == multiplier) {
-                    leading.constant = constant;
-                    return self;
-                }
-                [superView removeConstraint:leading];
-                [self setLeadingConstraint:nil relation:related];
-            }
-        }
-            break;
-        case NSLayoutAttributeTrailing: {
-            NSLayoutConstraint * right = [self rightConstraint];
-            if (right) {
-                [superView removeConstraint:right];
-                [self setRightConstraint:nil];
-            }
-            right = [self rightLessConstraint];
-            if (right) {
-                [superView removeConstraint:right];
-                [self setRightLessConstraint:nil];
-            }
-            right = [self rightGreaterConstraint];
-            if (right) {
-                [superView removeConstraint:right];
-                [self setRightGreaterConstraint:nil];
-            }
-            NSLayoutConstraint * trailing = [self trailingConstraintRelation:related];
-            if (trailing) {
-                if (trailing.firstAttribute == attribute &&
-                    trailing.secondAttribute == toAttribute &&
-                    trailing.firstItem == item &&
-                    trailing.secondItem == toItem &&
-                    trailing.relation == related &&
-                    trailing.multiplier == multiplier) {
-                    trailing.constant = constant;
-                    return self;
-                }
-                [superView removeConstraint:trailing];
-                [self setTrailingConstraint:nil relation:related];
             }
         }
             break;
@@ -3088,12 +2686,6 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
         case NSLayoutAttributeCenterX:
             [self setCenterXConstraint:constraint relation:relation];
             break;
-        case NSLayoutAttributeTrailing:
-            [self setTrailingConstraint:constraint relation:relation];
-            break;
-        case NSLayoutAttributeLeading:
-            [self setLeadingConstraint:constraint relation:relation];
-            break;
         case NSLayoutAttributeBottom:
             [self setBottomConstraint:constraint relation:relation];
             break;
@@ -3272,9 +2864,9 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
                         [view GW_CenterX:0];
                     } else if (view.center.x > superWidthHalf) {
                         if (nextColumnView) {
-                            [view GW_TrailingSpace:CGRectGetMinX(nextColumnView.frame) - CGRectGetMaxX(view.frame) toView:nextColumnView];
+                            [view GW_RightSpace:CGRectGetMinX(nextColumnView.frame) - CGRectGetMaxX(view.frame) toView:nextColumnView];
                         }else {
-                            [view GW_TrailingSpace:CGRectGetWidth(view.superview.frame) - CGRectGetMaxX(view.frame)];
+                            [view GW_RightSpace:CGRectGetWidth(view.superview.frame) - CGRectGetMaxX(view.frame)];
                         }
                     }
                 }else {
@@ -3287,9 +2879,9 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
                         [view GW_CenterX:0];
                     }else if (view.center.x > superWidthHalf) {
                         if (nextColumnView) {
-                            [view GW_TrailingSpace:CGRectGetMinX(nextColumnView.frame) - CGRectGetMaxX(view.frame) toView:nextColumnView];
+                            [view GW_RightSpace:CGRectGetMinX(nextColumnView.frame) - CGRectGetMaxX(view.frame) toView:nextColumnView];
                         }else {
-                            [view GW_TrailingSpace:CGRectGetWidth(view.superview.frame) - CGRectGetMaxX(view.frame)];
+                            [view GW_RightSpace:CGRectGetWidth(view.superview.frame) - CGRectGetMaxX(view.frame)];
                         }
                     }
                 }else {
@@ -3444,7 +3036,7 @@ static const int kBottom_Line_Tag = kTop_Line_Tag + 1;
     GW_Line * line = [self createLineWithTag:kRight_Line_Tag];
     line.backgroundColor = color;
     [line GW_Width:value];
-    [line GW_TrailingSpace:0];
+    [line GW_RightSpace:0];
     [line GW_TopSpace:0];
     [line GW_BottomSpace:0];
     return line;
@@ -3455,7 +3047,7 @@ static const int kBottom_Line_Tag = kTop_Line_Tag + 1;
     GW_Line * line = [self createLineWithTag:kRight_Line_Tag];
     line.backgroundColor = color;
     [line GW_Width:value];
-    [line GW_TrailingSpace:0];
+    [line GW_RightSpace:0];
     [line GW_TopSpace:padding];
     [line GW_BottomSpace:padding];
     return line;
