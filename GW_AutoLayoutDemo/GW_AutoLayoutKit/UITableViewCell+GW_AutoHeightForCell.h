@@ -10,6 +10,7 @@
 #import "GW_AutoLayout.h"
 #import "GW_AutoLayoutUtilities.h"
 
+#pragma mark - 特别注意UITableViewCell的子视图，如果布局中使用了GW_HeightAuto()，请不要设置GW_BottomSpace底部约束，容易导致高度计算不准，可以使用gw_CellBottomOffset设置距离底部的距离。
 
 ////////////////////////////列表视图//////////////////////////////
 #if TARGET_OS_IPHONE || TARGET_OS_TV

@@ -33,6 +33,34 @@
     self.navigationItem.title = @"普通高度宽度自动布局";
     self.view.backgroundColor = [UIColor whiteColor];
 
+    [self test2];
+}
+
+- (void)test2{
+    view2 = [UIView new];
+    view2.backgroundColor = [UIColor greenColor];
+    lable = [UILabel new];
+    lable.text = @"UIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormal";
+    [self.view addSubview:view2];
+    [view2 addSubview:lable];
+    
+    view2.GW_LeftSpace(10)
+    .GW_TopSpace(100)
+    .GW_RightSpace(10)
+    .GW_Height(100);
+    
+    lable.GW_LeftSpace(10)
+    .GW_RightSpace(10)
+    .GW_TopSpace(10)
+    .GW_HeightAuto();
+    
+//    lable.GW_BottomSpace(10);
+//    如果添加底部约束文字会变成UIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlSt... 导致算不出文字整体的真实高度。
+
+    
+}
+
+- (void)test1{
     view2 = [UIView new];
     lable = [UILabel new];
     txt = [UILabel new];
@@ -40,7 +68,7 @@
     [self.view addSubview:txt];
     txt.backgroundColor = [UIColor grayColor];
     
-
+    
     view2.backgroundColor = [UIColor grayColor];
     lable.text = @"UIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormal";
     
@@ -50,7 +78,7 @@
     [btn addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
     btn.backgroundColor = [UIColor orangeColor];
     [self.view addSubview:btn];
-
+    
     [self.view addSubview:view2];
     [view2 addSubview:lable];
     
@@ -87,7 +115,6 @@
     .GW_HeightAuto()
     .GW_BottomSpace(0)
     ;
-    
 }
 
 - (void)clickButton:(UIButton *)sender {
