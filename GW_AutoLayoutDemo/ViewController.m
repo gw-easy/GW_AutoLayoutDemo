@@ -29,9 +29,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self test1];
+//    [self test1];
 //    [self test2];
-//    [self test3];
+    [self test3];
 }
 
 - (void)test3{
@@ -44,6 +44,11 @@
     lOne.textColor = [UIColor greenColor];
     [viewOne addSubview:lOne];
     
+    UILabel *lTwo = [[UILabel alloc] init];
+    lTwo.text = @"UIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormal";
+    lTwo.textColor = [UIColor blueColor];
+    [viewOne addSubview:lTwo];
+    
     viewOne.GW_LeftSpace(10)
     .GW_CenterY(0)
     .GW_RightSpace(10)
@@ -52,9 +57,12 @@
     lOne.GW_LeftSpace(10)
     .GW_RightSpace(10)
     .GW_TopSpace(10)
-    .GW_HeightAuto()
-    .GW_BottomSpaceToView(10, viewOne)
-    ;
+    .GW_HeightAuto();
+    
+    lTwo.GW_LeftSpace(10)
+    .GW_RightSpace(10)
+    .GW_TopSpaceToView(0, lOne)
+    .GW_HeightAuto();
 }
 
 - (void)test2{
