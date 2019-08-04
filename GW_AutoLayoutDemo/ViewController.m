@@ -63,71 +63,34 @@
     .GW_RightSpace(10)
     .GW_TopSpaceToView(0, lOne)
     .GW_HeightAuto();
+
 }
 
 - (void)test2{
+    view2 = [UIView new];
+    view2.backgroundColor = [UIColor greenColor];
+    lable = [UILabel new];
+    lable.text = @"UIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormal";
+    [self.view addSubview:view2];
+    [view2 addSubview:lable];
     
-    UIView *viewBoot = [[UIView alloc] init];
-    viewBoot.backgroundColor = [UIColor blackColor];
-    viewBoot.alpha = 0.6;
-    [self.view addSubview:viewBoot];
-    
-    UIView *viewOne = [[UIView alloc] init];
-    viewOne.backgroundColor = [UIColor redColor];
-    [self.view addSubview:viewOne];
-    
-    UILabel *lOne = [[UILabel alloc] init];
-    lOne.text = @"UIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormal";
-    lOne.textColor = [UIColor greenColor];
-    [viewOne addSubview:lOne];
-    
-    UILabel *lTwo = [[UILabel alloc] init];
-    lTwo.text = @"UIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormal";
-    lTwo.textColor = [UIColor blueColor];
-    [viewOne addSubview:lTwo];
-    
-    UIButton *btnOne = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btnOne setTitle:@"aaa" forState:UIControlStateNormal];
-    btnOne.titleLabel.font = [UIFont systemFontOfSize:20];
-    [viewOne addSubview:btnOne];
-    
-    UIButton *btnTwo = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btnTwo setTitle:@"bbb" forState:UIControlStateNormal];
-    btnTwo.titleLabel.font = [UIFont systemFontOfSize:20];
-    [viewOne addSubview:btnTwo];
-    
-    
-    
-    viewOne.GW_LeftSpace(10)
-    .GW_CenterY(0)
+    view2.GW_LeftSpace(10)
+    .GW_TopSpace(100)
     .GW_RightSpace(10)
-    .GW_Height(300).GW_GreaterOrEqual()
-    .GW_Height(320).GW_LessOrEqual();
+    .GW_Height(100);
     
-    lOne.GW_LeftSpace(10)
+    lable.GW_LeftSpace(10)
     .GW_RightSpace(10)
     .GW_TopSpace(10)
     .GW_HeightAuto();
     
-    lTwo.GW_LeftSpaceEqualView(lOne)
-    .GW_TopSpaceToView(10, lOne)
-    .GW_RightSpaceEqualView(lOne)
-    .GW_HeightAuto();
+//    lable.GW_BottomSpace(10);
+//    如果添加底部约束文字会变成UIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlSt... 导致算不出文字整体的真实高度。
+
     
-    btnOne.GW_LeftSpaceEqualView(lOne)
-    .GW_TopSpaceToView(10, lTwo)
-    .GW_Size(100, 100)
-    .GW_BottomSpace(0);
-    
-    btnTwo.GW_SizeEqualView(btnOne)
-    .GW_RightSpaceEqualView(lOne)
-    .GW_BottomSpaceEqualView(btnOne);
 }
 
 - (void)test1{
-    self.navigationItem.title = @"普通高度宽度自动布局";
-    self.view.backgroundColor = [UIColor whiteColor];
-    
     view2 = [UIView new];
     lable = [UILabel new];
     txt = [UILabel new];
@@ -136,7 +99,7 @@
     txt.backgroundColor = [UIColor grayColor];
     
     
-    view2.backgroundColor = [UIColor redColor];
+    view2.backgroundColor = [UIColor grayColor];
     lable.text = @"UIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormalUIControlStateNormal";
     
     UIButton * btn = [UIButton new];
@@ -183,7 +146,6 @@
     .GW_BottomSpace(0)
     ;
 }
-
 
 - (void)clickButton:(UIButton *)sender {
     sender.selected = !sender.selected;
