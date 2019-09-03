@@ -430,6 +430,102 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
     return objc_getAssociatedObject(self, _cmd);
 }
 
+- (void)setLastBaselineConstraint:(NSLayoutConstraint *)lastBaselineConstraint relation:(NSLayoutRelation)relation {
+    switch (relation) {
+        case NSLayoutRelationLessThanOrEqual:
+            [self setLastBaselineLessConstraint:lastBaselineConstraint];
+            break;
+        case NSLayoutRelationGreaterThanOrEqual:
+            [self setLastBaselineGreaterConstraint:lastBaselineConstraint];
+        default:
+            [self setLastBaselineConstraint:lastBaselineConstraint];
+            break;
+    }
+}
+
+- (NSLayoutConstraint *)lastBaselineConstraintRelation:(NSLayoutRelation)relation {
+    switch (relation) {
+        case NSLayoutRelationGreaterThanOrEqual:
+            return [self lastBaselineGreaterConstraint];
+        case NSLayoutRelationLessThanOrEqual:
+            return [self lastBaselineLessConstraint];
+        default:
+            return [self lastBaselineConstraint];
+    }
+}
+
+
+- (void)setLastBaselineConstraint:(NSLayoutConstraint *)lastBaselineConstraint {
+    objc_setAssociatedObject(self, @selector(lastBaselineConstraint), lastBaselineConstraint, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSLayoutConstraint *)lastBaselineConstraint {
+    return objc_getAssociatedObject(self, _cmd);
+}
+
+- (void)setLastBaselineLessConstraint:(NSLayoutConstraint *)lastBaselineConstraint {
+    objc_setAssociatedObject(self, @selector(lastBaselineLessConstraint), lastBaselineConstraint, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSLayoutConstraint *)lastBaselineLessConstraint {
+    return objc_getAssociatedObject(self, _cmd);
+}
+
+- (void)setLastBaselineGreaterConstraint:(NSLayoutConstraint *)lastBaselineConstraint {
+    objc_setAssociatedObject(self, @selector(lastBaselineGreaterConstraint), lastBaselineConstraint, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSLayoutConstraint *)lastBaselineGreaterConstraint {
+    return objc_getAssociatedObject(self, _cmd);
+}
+
+- (void)setFirstBaselineConstraint:(NSLayoutConstraint *)firstBaselineConstraint relation:(NSLayoutRelation)relation {
+    switch (relation) {
+        case NSLayoutRelationLessThanOrEqual:
+            [self setFirstBaselineLessConstraint:firstBaselineConstraint];
+            break;
+        case NSLayoutRelationGreaterThanOrEqual:
+            [self setFirstBaselineGreaterConstraint:firstBaselineConstraint];
+        default:
+            [self setFirstBaselineConstraint:firstBaselineConstraint];
+            break;
+    }
+}
+
+- (NSLayoutConstraint *)firstBaselineConstraintRelation:(NSLayoutRelation)relation {
+    switch (relation) {
+        case NSLayoutRelationGreaterThanOrEqual:
+            return [self firstBaselineGreaterConstraint];
+        case NSLayoutRelationLessThanOrEqual:
+            return [self firstBaselineLessConstraint];
+        default:
+            return [self firstBaselineConstraint];
+    }
+}
+
+- (void)setFirstBaselineConstraint:(NSLayoutConstraint *)firstBaselineConstraint {
+    objc_setAssociatedObject(self, @selector(firstBaselineConstraint), firstBaselineConstraint, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSLayoutConstraint *)firstBaselineConstraint {
+    return objc_getAssociatedObject(self, _cmd);
+}
+
+- (void)setFirstBaselineLessConstraint:(NSLayoutConstraint *)firstBaselineConstraint {
+    objc_setAssociatedObject(self, @selector(firstBaselineLessConstraint), firstBaselineConstraint, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSLayoutConstraint *)firstBaselineLessConstraint {
+    return objc_getAssociatedObject(self, _cmd);
+}
+
+- (void)setFirstBaselineGreaterConstraint:(NSLayoutConstraint *)firstBaselineConstraint {
+    objc_setAssociatedObject(self, @selector(firstBaselineGreaterConstraint), firstBaselineConstraint, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSLayoutConstraint *)firstBaselineGreaterConstraint {
+    return objc_getAssociatedObject(self, _cmd);
+}
 
 #pragma mark - removeConstraint api v2.0 -
 
@@ -559,6 +655,74 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
 }
 
 #pragma mark - api version 2.0 -
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
+- (BaseLineSpace)GW_FirstBaseLine {
+    __weak typeof(self) weakSelf = self;
+    return ^(CGFloat space) {
+        [weakSelf GW_FirstBaseLine:space];
+        return weakSelf;
+    };
+}
+
+- (BaseLineSpaceToView)GW_FirstBaseLineToView {
+    __weak typeof(self) weakSelf = self;
+    return ^(CGFloat value , GW_VIEW * toView) {
+        [weakSelf GW_FirstBaseLine:value toView:toView];
+        return weakSelf;
+    };
+}
+
+- (BaseLineSpaceEqualView)GW_FirstBaseLineEqualView {
+    __weak typeof(self) weakSelf = self;
+    return ^(GW_VIEW * view) {
+        [weakSelf GW_FirstBaseLineEqualView:view];
+        return weakSelf;
+    };
+}
+
+- (BaseLineSpaceEqualViewOffset)GW_FirstBaseLineEqualViewOffset {
+    __weak typeof(self) weakSelf = self;
+    return ^(GW_VIEW * view, CGFloat offset) {
+        [weakSelf GW_FirstBaseLineEqualView:view offset:offset];
+        return weakSelf;
+    };
+}
+
+#endif
+
+- (BaseLineSpace)GW_LastBaseLine {
+    __weak typeof(self) weakSelf = self;
+    return ^(CGFloat space) {
+        [weakSelf GW_LastBaseLine:space];
+        return weakSelf;
+    };
+}
+
+- (BaseLineSpaceToView)GW_LastBaseLineToView {
+    __weak typeof(self) weakSelf = self;
+    return ^(CGFloat value , GW_VIEW * toView) {
+        [weakSelf GW_LastBaseLine:value toView:toView];
+        return weakSelf;
+    };
+}
+
+- (BaseLineSpaceEqualView)GW_LastBaseLineEqualView {
+    __weak typeof(self) weakSelf = self;
+    return ^(GW_VIEW * view) {
+        [weakSelf GW_LastBaseLineEqualView:view];
+        return weakSelf;
+    };
+}
+
+- (BaseLineSpaceEqualViewOffset)GW_LastBaseLineEqualViewOffset {
+    __weak typeof(self) weakSelf = self;
+    return ^(GW_VIEW * view, CGFloat offset) {
+        [weakSelf GW_LastBaseLineEqualView:view offset:offset];
+        return weakSelf;
+    };
+}
+
+
 - (LeftSpace)GW_LeftSpace {
     __weak typeof(self) weakSelf = self;
     return ^(CGFloat space) {
@@ -848,6 +1012,34 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
 }
 
 #pragma mark constructionValue
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
+- (CGFloat)firstBaselineConstraintValue{
+    return [self firstBaselineConstraint].constant;
+}
+
+- (CGFloat)firstBaselineLessConstraintValue{
+    return [self firstBaselineLessConstraint].constant;
+}
+
+- (CGFloat)firstBaselineGreaterConstraintValue{
+    return [self firstBaselineGreaterConstraint].constant;
+}
+#endif
+
+- (CGFloat)lastBaselineConstraintValue{
+    return [self lastBaselineConstraint].constant;
+}
+
+- (CGFloat)lastBaselineLessConstraintValue{
+    return [self lastBaselineLessConstraint].constant;
+}
+
+- (CGFloat)lastBaselineGreaterConstraintValue{
+    return [self lastBaselineGreaterConstraint].constant;
+}
+
+
+
 - (CGFloat)leftConstraintValue{
     return [self leftConstraint].constant;
 }
@@ -953,14 +1145,14 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
 #if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000)
     maxAttr = NSLayoutAttributeCenterYWithinMargins;
 #else
-    maxAttr = NSLayoutAttributeBottom;
+    maxAttr = NSLayoutAttributeLastBaseline;
 #endif
     
 #elif TARGET_OS_MAC
 #if (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
-    maxAttr = NSLayoutAttributeTop;
+    maxAttr = NSLayoutAttributeFirstBaseline;
 #else
-    maxAttr = NSLayoutAttributeBottom;
+    maxAttr = NSLayoutAttributeLastBaseline;
 #endif
     
 #endif
@@ -991,6 +1183,50 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
     NSLayoutConstraint * constraint = nil;
     GW_VIEW * view = nil;
     switch (attribute) {
+    #if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
+        case NSLayoutAttributeFirstBaseline:{
+            constraint = [self firstBaselineConstraint];
+            if (constraint) {
+                view = [self GW_MainViewConstraint:constraint];
+                if (view) [view removeConstraint:constraint];
+                [self setFirstBaselineConstraint:nil];
+            }
+            constraint = [self firstBaselineLessConstraint];
+            if (constraint) {
+                view = [self GW_MainViewConstraint:constraint];
+                if (view) [view removeConstraint:constraint];
+                [self setFirstBaselineLessConstraint:nil];
+            }
+            constraint = [self firstBaselineGreaterConstraint];
+            if (constraint) {
+                view = [self GW_MainViewConstraint:constraint];
+                if (view) [view removeConstraint:constraint];
+                [self setFirstBaselineGreaterConstraint:nil];
+            }
+        }
+            break;
+    #endif
+        case NSLayoutAttributeLastBaseline:{
+            constraint = [self lastBaselineConstraint];
+            if (constraint) {
+                view = [self GW_MainViewConstraint:constraint];
+                if (view) [view removeConstraint:constraint];
+                [self setLastBaselineConstraint:nil];
+            }
+            constraint = [self lastBaselineLessConstraint];
+            if (constraint) {
+                view = [self GW_MainViewConstraint:constraint];
+                if (view) [view removeConstraint:constraint];
+                [self setLastBaselineLessConstraint:nil];
+            }
+            constraint = [self lastBaselineGreaterConstraint];
+            if (constraint) {
+                view = [self GW_MainViewConstraint:constraint];
+                if (view) [view removeConstraint:constraint];
+                [self setLastBaselineGreaterConstraint:nil];
+            }
+        }
+            break;
         case NSLayoutAttributeCenterY:{
             constraint = [self centerYConstraint];
             if (constraint) {
@@ -1231,9 +1467,51 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
         return view;
     };
    
-    
-    NSLayoutConstraint * constraint = [self centerYConstraint];
+    NSLayoutConstraint * constraint = [self firstBaselineConstraint];
     GW_VIEW * mainView = getMainView(constraint);
+    if (mainView) {
+        [mainView removeConstraint:constraint];
+        [self setFirstBaselineConstraint:nil];
+    }
+
+    constraint = [self firstBaselineLessConstraint];
+    mainView = getMainView(constraint);
+    if (mainView) {
+        [mainView removeConstraint:constraint];
+        [self setFirstBaselineLessConstraint:nil];
+    }
+    
+    constraint = [self firstBaselineGreaterConstraint];
+    mainView = getMainView(constraint);
+    if (mainView) {
+        [mainView removeConstraint:constraint];
+        [self setFirstBaselineGreaterConstraint:nil];
+    }
+    
+    constraint = [self lastBaselineConstraint];
+    mainView = getMainView(constraint);
+    if (mainView) {
+        [mainView removeConstraint:constraint];
+        [self setLastBaselineConstraint:nil];
+    }
+    
+    constraint = [self lastBaselineLessConstraint];
+    mainView = getMainView(constraint);
+    if (mainView) {
+        [mainView removeConstraint:constraint];
+        [self setLastBaselineLessConstraint:nil];
+    }
+    
+    constraint = [self lastBaselineGreaterConstraint];
+    mainView = getMainView(constraint);
+    if (mainView) {
+        [mainView removeConstraint:constraint];
+        [self setLastBaselineGreaterConstraint:nil];
+    }
+    
+    constraint = [self centerYConstraint];
+    mainView = getMainView(constraint);
+
     if (mainView) {
         [mainView removeConstraint:constraint];
         [self setCenterYConstraint:nil];
@@ -1576,6 +1854,74 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
 
 #pragma mark - api version 1.0
 
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
+- (GW_VIEW *)GW_FirstBaseLine:(CGFloat)space {
+    return [self GW_ConstraintWithItem:self.superview
+                             attribute:NSLayoutAttributeFirstBaseline
+                              constant:0.0 - space];
+}
+
+- (GW_VIEW *)GW_FirstBaseLine:(CGFloat)space toView:(GW_VIEW *)toView {
+    NSLayoutAttribute toAttribute = NSLayoutAttributeLastBaseline;
+    if (![self sameSuperviewWithView1:toView view2:self]) {
+        toAttribute = NSLayoutAttributeFirstBaseline;
+    }
+    return [self GW_ConstraintWithItem:self
+                             attribute:NSLayoutAttributeFirstBaseline
+                             relatedBy:NSLayoutRelationEqual
+                                toItem:toView
+                             attribute:toAttribute
+                            multiplier:1
+                              constant:space];
+}
+
+- (GW_VIEW *)GW_FirstBaseLineEqualView:(GW_VIEW *)view {
+    return [self GW_FirstBaseLineEqualView:view offset:0];
+}
+
+- (GW_VIEW *)GW_FirstBaseLineEqualView:(GW_VIEW *)view offset:(CGFloat)offset {
+    return [self GW_ConstraintWithItem:view
+                             attribute:NSLayoutAttributeFirstBaseline
+                              constant:0.0 - offset];
+}
+    
+#endif
+    
+- (GW_VIEW *)GW_LastBaseLine:(CGFloat)space {
+    return [self GW_ConstraintWithItem:self.superview
+                             attribute:NSLayoutAttributeLastBaseline
+                              constant:0.0 - space];
+}
+
+- (GW_VIEW *)GW_LastBaseLine:(CGFloat)space toView:(GW_VIEW *)toView {
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
+    NSLayoutAttribute toAttribute = NSLayoutAttributeFirstBaseline;
+#else
+    NSLayoutAttribute toAttribute = NSLayoutAttributeTop;
+#endif
+    if (![self sameSuperviewWithView1:toView view2:self]) {
+        toAttribute = NSLayoutAttributeLastBaseline;
+    }
+    return [self GW_ConstraintWithItem:self
+                             attribute:NSLayoutAttributeLastBaseline
+                             relatedBy:NSLayoutRelationEqual
+                                toItem:toView
+                             attribute:toAttribute
+                            multiplier:1
+                              constant:0.0 - space];
+}
+
+- (GW_VIEW *)GW_LastBaseLineEqualView:(GW_VIEW *)view {
+    return [self GW_LastBaseLineEqualView:view offset:0];
+}
+
+- (GW_VIEW *)GW_LastBaseLineEqualView:(GW_VIEW *)view offset:(CGFloat)offset {
+    return [self GW_ConstraintWithItem:view
+                             attribute:NSLayoutAttributeLastBaseline
+                              constant:0.0 - offset];
+}
+
+    
 - (GW_VIEW *)GW_LeftSpace:(CGFloat)leftSpace {
     return [self GW_ConstraintWithItem:self.superview
                        attribute:NSLayoutAttributeLeft
@@ -2016,6 +2362,72 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
         item.translatesAutoresizingMaskIntoConstraints = NO;
     }
     switch (attribute) {
+        case NSLayoutAttributeLastBaseline: {
+            NSLayoutConstraint * bottom = [self bottomConstraint];
+            if (bottom) {
+                [superView removeConstraint:bottom];
+                [self setBottomConstraint:nil];
+            }
+            bottom = [self bottomLessConstraint];
+            if (bottom) {
+                [superView removeConstraint:bottom];
+                [self setBottomLessConstraint:nil];
+            }
+            bottom = [self bottomGreaterConstraint];
+            if (bottom) {
+                [superView removeConstraint:bottom];
+                [self setBottomGreaterConstraint:nil];
+            }
+            NSLayoutConstraint * lastBaseline = [self lastBaselineConstraintRelation:related];
+            if (lastBaseline) {
+                if (lastBaseline.firstAttribute == attribute &&
+                    lastBaseline.secondAttribute == toAttribute &&
+                    lastBaseline.firstItem == item &&
+                    lastBaseline.secondItem == toItem &&
+                    lastBaseline.relation == related &&
+                    lastBaseline.multiplier == multiplier) {
+                    lastBaseline.constant = constant;
+                    return self;
+                }
+                [superView removeConstraint:lastBaseline];
+                [self setLastBaselineConstraint:nil relation:related];
+            }
+        }
+            break;
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
+        case NSLayoutAttributeFirstBaseline: {
+            NSLayoutConstraint * top = [self topConstraint];
+            if (top) {
+                [superView removeConstraint:top];
+                [self setTopConstraint:nil];
+            }
+            top = [self topLessConstraint];
+            if (top) {
+                [superView removeConstraint:top];
+                [self setTopLessConstraint:nil];
+            }
+            top = [self topGreaterConstraint];
+            if (top) {
+                [superView removeConstraint:top];
+                [self setTopGreaterConstraint:nil];
+            }
+            NSLayoutConstraint * firstBaseline = [self firstBaselineConstraintRelation:related];
+            if (firstBaseline) {
+                if (firstBaseline.firstAttribute == attribute &&
+                    firstBaseline.secondAttribute == toAttribute &&
+                    firstBaseline.firstItem == item &&
+                    firstBaseline.secondItem == toItem &&
+                    firstBaseline.relation == related &&
+                    firstBaseline.multiplier == multiplier) {
+                    firstBaseline.constant = constant;
+                    return self;
+                }
+                [superView removeConstraint:firstBaseline];
+                [self setFirstBaselineConstraint:nil relation:related];
+            }
+        }
+            break;
+#endif
         case NSLayoutAttributeLeft: {
             NSLayoutConstraint * left = [self leftConstraintRelation:related];
             if (left) {
@@ -2051,6 +2463,21 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
         }
             break;
         case NSLayoutAttributeTop: {
+            NSLayoutConstraint * firstBaseline = [self firstBaselineConstraint];
+            if (firstBaseline) {
+                [superView removeConstraint:firstBaseline];
+                [self setFirstBaselineConstraint:nil];
+            }
+            firstBaseline = [self firstBaselineLessConstraint];
+            if (firstBaseline) {
+                [superView removeConstraint:firstBaseline];
+                [self setFirstBaselineLessConstraint:nil];
+            }
+            firstBaseline = [self firstBaselineGreaterConstraint];
+            if (firstBaseline) {
+                [superView removeConstraint:firstBaseline];
+                [self setFirstBaselineGreaterConstraint:nil];
+            }
             NSLayoutConstraint * top = [self topConstraintRelation:related];
             if (top) {
                 if (top.firstAttribute == attribute &&
@@ -2068,6 +2495,22 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
         }
             break;
         case NSLayoutAttributeBottom: {
+            NSLayoutConstraint * lastBaseline = [self lastBaselineConstraint];
+            if (lastBaseline) {
+                [superView removeConstraint:lastBaseline];
+                [self setLastBaselineConstraint:nil];
+            }
+            lastBaseline = [self lastBaselineLessConstraint];
+            if (lastBaseline) {
+                [superView removeConstraint:lastBaseline];
+                [self setLastBaselineLessConstraint:nil];
+            }
+            lastBaseline = [self lastBaselineGreaterConstraint];
+            if (lastBaseline) {
+                [superView removeConstraint:lastBaseline];
+                [self setLastBaselineGreaterConstraint:nil];
+            }
+
             NSLayoutConstraint * bottom = [self bottomConstraintRelation:related];
             if (bottom) {
                 if (bottom.firstAttribute == attribute &&
@@ -2241,6 +2684,14 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
 
 - (void)setCacheConstraint:(NSLayoutConstraint *)constraint attribute:(NSLayoutAttribute) attribute relation:(NSLayoutRelation)relation {
     switch (attribute) {
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
+        case NSLayoutAttributeFirstBaseline:
+            [self setFirstBaselineConstraint:constraint relation:relation];
+            break;
+#endif
+        case NSLayoutAttributeLastBaseline:
+            [self setLastBaselineConstraint:constraint relation:relation];
+            break;
         case NSLayoutAttributeCenterY:
             [self setCenterYConstraint:constraint relation:relation];
             break;

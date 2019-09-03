@@ -41,6 +41,12 @@ typedef GW_VIEW * (^PriorityRequired)(void);
 typedef GW_VIEW * (^PriorityFitting)(void);
 typedef GW_VIEW * (^PriorityValue)(CGFloat value);
 
+typedef GW_VIEW * (^BaseLineSpace)(CGFloat value);
+typedef GW_VIEW * (^BaseLineSpaceToView)(CGFloat value , GW_VIEW * toView);
+typedef GW_VIEW * (^BaseLineSpaceEqualView)(GW_VIEW * view);
+typedef GW_VIEW * (^BaseLineSpaceEqualViewOffset)(GW_VIEW * view, CGFloat offset);
+
+
 typedef GW_VIEW * (^LeftSpace)(CGFloat value);
 typedef GW_VIEW * (^LeftSpaceToView)(CGFloat value , GW_VIEW * toView);
 typedef GW_VIEW * (^LeftSpaceEqualView)(GW_VIEW * view);
@@ -118,6 +124,29 @@ typedef GW_VIEW * (^BoundsEqual)(GW_VIEW * view);
 @property (nonatomic ,copy , readonly)PriorityFitting GW_PriorityFitting;
 /// 设置当前约束的优先级 (CGFloat value): 优先级大小(0-1000)
 @property (nonatomic ,copy , readonly)PriorityValue GW_Priority;
+
+
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
+/// 与父视图底边间距Y(CGFloat value)
+@property (nonatomic ,copy , readonly)BaseLineSpace GW_FirstBaseLine;
+/// 与相对视图toView底边间距Y(CGFloat value,GW_VIEW * toView)
+@property (nonatomic ,copy , readonly)BaseLineSpaceToView GW_FirstBaseLineToView;
+/// 与视图view底边间距Y相等(GW_VIEW * view)
+@property (nonatomic ,copy , readonly)BaseLineSpaceEqualView GW_FirstBaseLineEqualView;
+/// 与视图view底边间距Y相等并偏移offset(GW_VIEW * view, CGFloat offset)
+@property (nonatomic ,copy , readonly)BaseLineSpaceEqualViewOffset GW_FirstBaseLineEqualViewOffset;
+#endif
+
+/// 与父视图底边间距Y(CGFloat value)
+@property (nonatomic ,copy , readonly)BaseLineSpace GW_LastBaseLine;
+/// 与相对视图toView底边间距Y(CGFloat value,GW_VIEW * toView)
+@property (nonatomic ,copy , readonly)BaseLineSpaceToView GW_LastBaseLineToView;
+/// 与视图view底边间距Y相等(GW_VIEW * view)
+@property (nonatomic ,copy , readonly)BaseLineSpaceEqualView GW_LastBaseLineEqualView;
+/// 与视图view底边间距Y相等并偏移offset(GW_VIEW * view, CGFloat offset)
+@property (nonatomic ,copy , readonly)BaseLineSpaceEqualViewOffset GW_LastBaseLineEqualViewOffset;
+
+
 
 /// 与父视图左边间距(CGFloat value)
 @property (nonatomic ,copy , readonly)LeftSpace GW_LeftSpace;
@@ -207,7 +236,16 @@ typedef GW_VIEW * (^BoundsEqual)(GW_VIEW * view);
 //[view leftConstraint].content----进行复制修改参数
 
 //- (NSLayoutConstraint *)currentConstraint;
+
 //布局数据
+- (NSLayoutConstraint *)lastBaselineConstraint;
+- (NSLayoutConstraint *)lastBaselineLessConstraint;
+- (NSLayoutConstraint *)lastBaselineGreaterConstraint;
+
+- (NSLayoutConstraint *)firstBaselineConstraint;
+- (NSLayoutConstraint *)firstBaselineLessConstraint;
+- (NSLayoutConstraint *)firstBaselineGreaterConstraint;
+
 - (NSLayoutConstraint *)leftConstraint;
 - (NSLayoutConstraint *)leftLessConstraint;
 - (NSLayoutConstraint *)leftGreaterConstraint;
@@ -244,6 +282,15 @@ typedef GW_VIEW * (^BoundsEqual)(GW_VIEW * view);
 #pragma mark constructionValue
 //@property (assign, nonatomic, readonly) CGFloat currentConstraintValue;
 //各个布局的值
+@property (assign, nonatomic, readonly) CGFloat lastBaselineConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat lastBaselineLessConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat lastBaselineGreaterConstraintValue;
+
+@property (assign, nonatomic, readonly) CGFloat firstBaselineConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat firstBaselineLessConstraintValue;
+@property (assign, nonatomic, readonly) CGFloat firstBaselineGreaterConstraintValue;
+
+
 @property (assign, nonatomic, readonly) CGFloat leftConstraintValue;
 @property (assign, nonatomic, readonly) CGFloat leftLessConstraintValue;
 @property (assign, nonatomic, readonly) CGFloat leftGreaterConstraintValue;
@@ -381,6 +428,80 @@ typedef GW_VIEW * (^BoundsEqual)(GW_VIEW * view);
  @return 返回当前视图
  */
 - (GW_VIEW *)GW_priority:(CGFloat)value;
+
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
+/**
+ 设置顶部基线偏移(默认相对父视图)
+ 
+ @param space 间隙
+ @return 返回当前视图
+ */
+- (GW_VIEW *)GW_FirstBaseLine:(CGFloat)space;
+
+/**
+ 设置顶部基线与对象视图底部基线偏移
+ 
+ @param space 间隙
+ @param toView 相对视图
+ @return 返回当前视图
+ */
+- (GW_VIEW *)GW_FirstBaseLine:(CGFloat)space toView:(GW_VIEW *)toView;
+
+/**
+ 设置顶部基线与相对视图顶部基线相等
+ 
+ @param view 相对视图
+ @return 返回当前视图
+ */
+- (GW_VIEW *)GW_FirstBaseLineEqualView:(GW_VIEW *)view;
+
+/**
+ 设置顶部基线与相对视图顶部基线相等并偏移offset
+ 
+ @param view 相对视图
+ @param offset 偏移量
+ @return 返回当前视图
+ */
+- (GW_VIEW *)GW_FirstBaseLineEqualView:(GW_VIEW *)view offset:(CGFloat)offset;
+
+#endif
+
+/**
+ 设置底部基线偏移(默认相对父视图)
+ 
+ @param space 间隙
+ @return 返回当前视图
+ */
+- (GW_VIEW *)GW_LastBaseLine:(CGFloat)space;
+
+/**
+ 设置底部基线与对象视图顶部基线偏移
+ 
+ @param space 间隙
+ @param toView 相对视图
+ @return 返回当前视图
+ */
+- (GW_VIEW *)GW_LastBaseLine:(CGFloat)space toView:(GW_VIEW *)toView;
+
+/**
+ 设置底部基线与相对视图底部基线相等
+ 
+ @param view 相对视图
+ @return 返回当前视图
+ */
+- (GW_VIEW *)GW_LastBaseLineEqualView:(GW_VIEW *)view;
+
+/**
+ 设置底部基线与相对视图底部基线相等并偏移offset
+ 
+ @param view 相对视图
+ @param offset 偏移量
+ @return 返回当前视图
+ */
+- (GW_VIEW *)GW_LastBaseLineEqualView:(GW_VIEW *)view offset:(CGFloat)offset;
+
+
+
 
 /**
  设置左边距(默认相对父视图)
