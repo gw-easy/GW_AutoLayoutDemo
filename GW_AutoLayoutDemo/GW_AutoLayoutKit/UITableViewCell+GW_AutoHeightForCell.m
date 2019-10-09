@@ -389,7 +389,7 @@
     
     CGFloat cacheHeight = CGRectGetMaxY(bottomView.frame) + cell.gw_CellBottomOffset;
     [sectionCacheHeightDictionary setValue:@(cacheHeight) forKey:@(indexPath.row).stringValue];
-    return cacheHeight;
+    return cacheHeight>0?cacheHeight:0;
 }
 
 + (CGFloat)gw_CellHeightForIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
@@ -452,7 +452,7 @@
     
     CGFloat cacheHeight = CGRectGetMaxY(bottomView.frame) + cell.gw_CellBottomOffset;
     [sectionCacheHeightDictionary setValue:@(cacheHeight) forKey:@(indexPath.row).stringValue];
-    return cacheHeight;
+    return cacheHeight>0?cacheHeight:0;
 }
 
 
