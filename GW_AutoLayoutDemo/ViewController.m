@@ -31,7 +31,7 @@
     [super viewDidLoad];
 //    [self test1];
 //    [self test2];
-    [self test3];
+//    [self test3];
 }
 
 - (void)test3{

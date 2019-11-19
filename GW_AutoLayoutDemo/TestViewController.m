@@ -53,7 +53,7 @@
 
     _tableView = [UITableView new];
     [self.view addSubview:_tableView];
-    /// 一行代码添加约束 (全屏)
+
     [_tableView GW_AutoSize:0 top:0 right:0 bottom:0];
     _tableView.dataSource = self;
     _tableView.delegate = self;
