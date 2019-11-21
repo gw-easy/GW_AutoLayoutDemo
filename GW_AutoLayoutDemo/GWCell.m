@@ -80,7 +80,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat gg = [GWTwoCell gw_CellHeightForIndexPath:indexPath tableView:tableView];
+    CGFloat gg = [GWTwoCell gw_CellHeightForIdentifier:NSStringFromClass([GWTwoCell class]) indexPath:indexPath tableView:tableView];
 //    NSLog(@"gg--%d---%f",indexPath.row,gg);
     return gg;
 }

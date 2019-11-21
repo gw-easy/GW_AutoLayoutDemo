@@ -12,6 +12,7 @@
 #import "TestViewController.h"
 #import "Test2ViewController.h"
 #import "GW_AutoLayout.h"
+#import "Test3Controller.h"
 @interface ViewController (){
     UIView * view2;
     UILabel * lable;
@@ -31,7 +32,15 @@
     [super viewDidLoad];
 //    [self test1];
 //    [self test2];
-    [self test3];
+//    [self test3];
+//    [self test4];
+}
+
+- (void)test4{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        Test3Controller *test3 = [[Test3Controller alloc] init];
+        [self presentViewController:test3 animated:YES completion:nil];
+    });
 }
 
 - (void)test3{
