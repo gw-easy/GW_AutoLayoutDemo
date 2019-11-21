@@ -327,7 +327,7 @@
     if (sectionCacheHeightDictionary != nil) {
         NSNumber * cellHeight = sectionCacheHeightDictionary[@(indexPath.row).stringValue];
         if (cellHeight) {
-            return cellHeight.floatValue;
+            return cellHeight.floatValue>0?cellHeight.floatValue:0;
         }
     }else {
         sectionCacheHeightDictionary = [NSMutableDictionary dictionary];
@@ -401,7 +401,7 @@
     if (sectionCacheHeightDictionary != nil) {
         NSNumber * cellHeight = sectionCacheHeightDictionary[@(indexPath.row).stringValue];
         if (cellHeight) {
-            return cellHeight.floatValue;
+            return cellHeight.floatValue>0?cellHeight.floatValue:0;
         }
     }else {
         sectionCacheHeightDictionary = [NSMutableDictionary dictionary];
@@ -454,8 +454,6 @@
     [sectionCacheHeightDictionary setValue:@(cacheHeight) forKey:@(indexPath.row).stringValue];
     return cacheHeight>0?cacheHeight:0;
 }
-
-
 
 @end
 #endif
