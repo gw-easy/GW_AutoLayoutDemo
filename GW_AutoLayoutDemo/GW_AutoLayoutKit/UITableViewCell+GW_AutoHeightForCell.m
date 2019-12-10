@@ -308,9 +308,7 @@
     }
     NSString * cacheHeightKey = @(indexPath.section).stringValue;
     NSMutableDictionary * sectionCacheHeightDictionary = tableView.gw_CacheHeightDictionary[cacheHeightKey];
-    BOOL isRegisetCell = NO;
     if (sectionCacheHeightDictionary != nil) {
-        isRegisetCell = YES;
         NSNumber * cellHeight = sectionCacheHeightDictionary[@(indexPath.row).stringValue];
         if (cellHeight) {
             return cellHeight.floatValue;

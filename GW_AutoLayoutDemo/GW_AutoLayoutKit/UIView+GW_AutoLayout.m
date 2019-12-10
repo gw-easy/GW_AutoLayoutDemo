@@ -2041,7 +2041,7 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
                           toItem:toView
                        attribute:toAttribute
                       multiplier:1
-                        constant:bottomSpace];
+                        constant:0.0 - bottomSpace];
 }
 
 - (GW_VIEW *)GW_BottomSpaceEqualView:(GW_VIEW *)view {
