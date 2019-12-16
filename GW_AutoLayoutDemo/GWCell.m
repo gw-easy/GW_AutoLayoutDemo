@@ -50,7 +50,7 @@
         self.gw_CellBottomOffset = 10;
         
 //        self.gw_TableViewWidth = [UIScreen mainScreen].bounds.size.width;
-        self.gw_TableViewWidth = self.width;
+        self.gw_TableViewWidth = self.width_GW;
         
 //        NSLog(@"%f",self.width);
         
@@ -100,7 +100,7 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    [cell setContent:@"bbbbbbbbbb-------bbbbbbbbbb--------bbbbbbbbbb-------bbbbbbbbbb--------bbbbbbbbbb-------bbbbbbbbbb--------bbbbbbbbbb-------bbbbbbbbbb--------bbbbbbbbbb-------bbbbbbbbbb--------" index:indexPath.row width:self.gw_CellTableView.width];
+    [cell setContent:@"bbbbbbbbbb-------bbbbbbbbbb--------bbbbbbbbbb-------bbbbbbbbbb--------bbbbbbbbbb-------bbbbbbbbbb--------bbbbbbbbbb-------bbbbbbbbbb--------bbbbbbbbbb-------bbbbbbbbbb--------" index:indexPath.row width:self.gw_CellTableView.width_GW];
 
     return cell;
 }

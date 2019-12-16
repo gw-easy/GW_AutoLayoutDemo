@@ -341,8 +341,8 @@
         tableViewWidth = CGRectGetWidth(tableView.frame);
     }
     if (tableViewWidth == 0) return 0;
-    cell.width = tableViewWidth;
-    cell.contentView.width = tableViewWidth;
+    cell.width_GW = tableViewWidth;
+    cell.contentView.width_GW = tableViewWidth;
 
     [cell layoutIfNeeded];
     

@@ -19,6 +19,5 @@ FOUNDATION_EXPORT const unsigned char GW_AutoLayoutVersionString[];
 //#import "GW_StackView.h"
 #import "UITableViewCell+GW_AutoHeightForCell.h"
 #import "UIView+GW_AutoLayout.h"
-#import "UIView+GW.h"
 #import "GW_AutoLayoutUtilities.h"
 
