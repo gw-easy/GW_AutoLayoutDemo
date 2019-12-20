@@ -288,6 +288,7 @@
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+
 - (CGFloat)gw_TableViewWidth {
     id value = objc_getAssociatedObject(self, _cmd);
     return value != nil ? [value floatValue] : 0;

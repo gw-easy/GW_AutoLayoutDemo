@@ -1,8 +1,8 @@
 //
-//  Test3Controller.h
+//  MianTableViewController.h
 //  GW_AutoLayoutDemo
 //
-//  Created by zdwx on 2019/11/21.
+//  Created by zdwx on 2019/12/20.
 //  Copyright © 2019 gw. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Test3Controller : UITableViewController
+@interface MainTableViewController : UITableViewController
 
 @end
 

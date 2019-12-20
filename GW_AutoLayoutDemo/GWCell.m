@@ -10,7 +10,6 @@
 #import "GW_AutoLayout.h"
 #import "GWTwoCell.h"
 @interface GWCell()<UITableViewDataSource,UITableViewDelegate> {
-    UILabel *  _image;
     UILabel *  _title;
     
     UILabel *  _other;
@@ -40,11 +39,10 @@
 
             
         [self.contentView addSubview:_tableView];
-        _tableView.GW_LeftSpace(100).GW_RightSpace(10).GW_TopSpaceToView(10, _content).GW_HeightAuto();
+        _tableView.GW_LeftSpace(0).GW_RightSpace(0).GW_TopSpaceToView(10, _content).GW_HeightAuto();
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.scrollEnabled = NO;
-        self.gw_CellTableView = _tableView;
         
         
         self.gw_CellBottomOffset = 10;
@@ -61,10 +59,10 @@
 
 - (void)setContent:(NSString *)content index:(NSInteger)index data:(NSMutableArray *)data{
     _content.text = content;
-    _image.text = @(index).stringValue;
 
     self.dataArr = data;
     [_tableView reloadData];
+    NSLog(@"height = %f",_tableView.contentSize.height);
     [_tableView GW_Height:_tableView.contentSize.height];
 
 
@@ -81,7 +79,6 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat gg = [GWTwoCell gw_CellHeightForIdentifier:NSStringFromClass([GWTwoCell class]) indexPath:indexPath tableView:tableView];
-//    NSLog(@"gg--%d---%f",indexPath.row,gg);
     return gg;
 }
 
@@ -100,7 +97,7 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    [cell setContent:@"bbbbbbbbbb-------bbbbbbbbbb--------bbbbbbbbbb-------bbbbbbbbbb--------bbbbbbbbbb-------bbbbbbbbbb--------bbbbbbbbbb-------bbbbbbbbbb--------bbbbbbbbbb-------bbbbbbbbbb--------" index:indexPath.row width:self.gw_CellTableView.width_GW];
+    [cell setContent:@"bbbbbbbbbb-------bbbbbbbbbb--------bbbbbbbbbb-------bbbbbbbbbb--------bbbbbbbbbb-------bbbbbbbbbb--------bbbbbbbbbb-------bbbbbbbbbb--------bbbbbbbbbb-------bbbbbbbbbb--------" width:self.width_GW];
 
     return cell;
 }

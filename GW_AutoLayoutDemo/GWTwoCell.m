@@ -33,10 +33,9 @@
     return self;
 }
 
-- (void)setContent:(NSString *)content index:(NSInteger)index width:(CGFloat)width{
+- (void)setContent:(NSString *)content width:(CGFloat)width{
     _content.text = content;
     self.gw_TableViewWidth = width;
-
     
 }
 

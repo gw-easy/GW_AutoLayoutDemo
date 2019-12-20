@@ -12,6 +12,8 @@
 
 @property (copy, nonatomic)NSString *content;
 
+@property (copy, nonatomic)NSString *content2;
+
 @property (strong, nonatomic)NSArray *dataArr;
 
 @property (assign, nonatomic)BOOL opencell;

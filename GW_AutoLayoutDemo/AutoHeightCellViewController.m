@@ -6,12 +6,11 @@
 //  Copyright © 2017年 gw. All rights reserved.
 //
 
-#import "TestViewController.h"
-#import "ViewController.h"
+#import "AutoHeightCellViewController.h"
 #import "GW_AutoLayout.h"
 #import "GWCell.h"
 #import "testModel.h"
-@interface TestViewController ()<UITableViewDataSource,UITableViewDelegate> {
+@interface AutoHeightCellViewController ()<UITableViewDataSource,UITableViewDelegate> {
     UITableView * _tableView;
     NSMutableArray * dateSourceArray;
     UIView  * view1;
@@ -20,36 +19,24 @@
 
 @end
 
-@implementation TestViewController
-- (IBAction)backBtnAction:(id)sender {
-    for (UIViewController *vc in self.navigationController.childViewControllers) {
-        if ([vc isKindOfClass:[ViewController class]]) {
-            ViewController *vv = (ViewController *)vc;
-            vv.bbbBool = YES;
-            [self.navigationController popToViewController:vv animated:YES];
-        }
-        
-    }
-    
-}
+@implementation AutoHeightCellViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.title = @"列表自动计算cell高度";
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIBarButtonItem * rightItem = [[UIBarButtonItem alloc] initWithTitle:@"刷新" style:UIBarButtonItemStylePlain target:self action:@selector(clickRefresh:)];
     
     self.navigationItem.rightBarButtonItem = rightItem;
-    NSMutableArray *muArr = [NSMutableArray new];
-    for (int i = 0; i<5; i++) {
+    dateSourceArray = [NSMutableArray new];
+    for (int i = 0; i<1; i++) {
         testModel *testM = [testModel new];
         testM.content = @"aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----";
         testM.opencell = YES;
-        [muArr addObject:testM];
+        [dateSourceArray addObject:testM];
     }
-    dateSourceArray = muArr;
 
     _tableView = [UITableView new];
     [self.view addSubview:_tableView];
@@ -59,10 +46,8 @@
     _tableView.delegate = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    
-    
-    
 }
+
 - (void)clickRefresh:(UIBarButtonItem *)sender {
     [_tableView reloadData];
 }
@@ -112,7 +97,7 @@
     
     testModel *m = dateSourceArray[indexPath.row];
     m.opencell = !m.opencell;
-    
+     
     [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:0];
 
 }

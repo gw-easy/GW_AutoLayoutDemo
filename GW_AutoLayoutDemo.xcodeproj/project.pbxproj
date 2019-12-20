@@ -7,20 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		282672A521904B4600E1810E /* Test2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 282672A421904B4600E1810E /* Test2ViewController.m */; };
-		285B0BE2238654F40042E3B1 /* Test3Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 285B0BE1238654F40042E3B1 /* Test3Controller.m */; };
-		285B0BE52386550D0042E3B1 /* Test3Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 285B0BE42386550D0042E3B1 /* Test3Cell.m */; };
+		289B69A923ACB25600979939 /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289B69A823ACB25600979939 /* MainTableViewController.m */; };
 		C402ADAD1FE7B67C0023F092 /* UITableViewCell+GW_AutoHeightForCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C402ADA71FE7B67C0023F092 /* UITableViewCell+GW_AutoHeightForCell.m */; };
 		C402ADAF1FE7B67C0023F092 /* UIView+GW_AutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C402ADAB1FE7B67C0023F092 /* UIView+GW_AutoLayout.m */; };
 		C409B08F1FE397F800D28505 /* GWTwoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C409B08E1FE397F800D28505 /* GWTwoCell.m */; };
-		C46327A61FC692DA005E6A02 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C46327A51FC692DA005E6A02 /* TestViewController.m */; };
+		C46327A61FC692DA005E6A02 /* AutoHeightCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C46327A51FC692DA005E6A02 /* AutoHeightCellViewController.m */; };
 		C46327A91FC69680005E6A02 /* testModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C46327A81FC69680005E6A02 /* testModel.m */; };
-		C46327AC1FC6968A005E6A02 /* testModel2.m in Sources */ = {isa = PBXBuildFile; fileRef = C46327AB1FC6968A005E6A02 /* testModel2.m */; };
 		C4AD5C551FF0E4DB00F81BC2 /* gaodu.gif in Resources */ = {isa = PBXBuildFile; fileRef = C4AD5C531FF0E4DB00F81BC2 /* gaodu.gif */; };
 		C4AD5C561FF0E4DB00F81BC2 /* zidongcell.gif in Resources */ = {isa = PBXBuildFile; fileRef = C4AD5C541FF0E4DB00F81BC2 /* zidongcell.gif */; };
 		C4E923EF1FE1067300368331 /* GWCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E923EE1FE1067300368331 /* GWCell.m */; };
 		C4FF54461FBEC5BB00F2DD89 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4FF54451FBEC5BB00F2DD89 /* AppDelegate.m */; };
-		C4FF54491FBEC5BB00F2DD89 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4FF54481FBEC5BB00F2DD89 /* ViewController.m */; };
 		C4FF544C1FBEC5BB00F2DD89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4FF544A1FBEC5BB00F2DD89 /* Main.storyboard */; };
 		C4FF544E1FBEC5BB00F2DD89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4FF544D1FBEC5BB00F2DD89 /* Assets.xcassets */; };
 		C4FF54511FBEC5BB00F2DD89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4FF544F1FBEC5BB00F2DD89 /* LaunchScreen.storyboard */; };
@@ -45,12 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		282672A321904B4600E1810E /* Test2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test2ViewController.h; sourceTree = "<group>"; };
-		282672A421904B4600E1810E /* Test2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test2ViewController.m; sourceTree = "<group>"; };
-		285B0BE0238654F40042E3B1 /* Test3Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test3Controller.h; sourceTree = "<group>"; };
-		285B0BE1238654F40042E3B1 /* Test3Controller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test3Controller.m; sourceTree = "<group>"; };
-		285B0BE32386550D0042E3B1 /* Test3Cell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test3Cell.h; sourceTree = "<group>"; };
-		285B0BE42386550D0042E3B1 /* Test3Cell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test3Cell.m; sourceTree = "<group>"; };
+		289B69A723ACB25600979939 /* MainTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTableViewController.h; sourceTree = "<group>"; };
+		289B69A823ACB25600979939 /* MainTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTableViewController.m; sourceTree = "<group>"; };
 		C402ADA21FE7B67C0023F092 /* GW_AutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW_AutoLayout.h; sourceTree = "<group>"; };
 		C402ADA31FE7B67C0023F092 /* GW_AutoLayoutUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW_AutoLayoutUtilities.h; sourceTree = "<group>"; };
 		C402ADA61FE7B67C0023F092 /* UITableViewCell+GW_AutoHeightForCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+GW_AutoHeightForCell.h"; sourceTree = "<group>"; };
@@ -59,12 +51,10 @@
 		C402ADAB1FE7B67C0023F092 /* UIView+GW_AutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GW_AutoLayout.m"; sourceTree = "<group>"; };
 		C409B08D1FE397F800D28505 /* GWTwoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GWTwoCell.h; sourceTree = "<group>"; };
 		C409B08E1FE397F800D28505 /* GWTwoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GWTwoCell.m; sourceTree = "<group>"; };
-		C46327A41FC692DA005E6A02 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
-		C46327A51FC692DA005E6A02 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		C46327A41FC692DA005E6A02 /* AutoHeightCellViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoHeightCellViewController.h; sourceTree = "<group>"; };
+		C46327A51FC692DA005E6A02 /* AutoHeightCellViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoHeightCellViewController.m; sourceTree = "<group>"; };
 		C46327A71FC69680005E6A02 /* testModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testModel.h; sourceTree = "<group>"; };
 		C46327A81FC69680005E6A02 /* testModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = testModel.m; sourceTree = "<group>"; };
-		C46327AA1FC6968A005E6A02 /* testModel2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testModel2.h; sourceTree = "<group>"; };
-		C46327AB1FC6968A005E6A02 /* testModel2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = testModel2.m; sourceTree = "<group>"; };
 		C4AD5C531FF0E4DB00F81BC2 /* gaodu.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gaodu.gif; sourceTree = "<group>"; };
 		C4AD5C541FF0E4DB00F81BC2 /* zidongcell.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = zidongcell.gif; sourceTree = "<group>"; };
 		C4E923ED1FE1067300368331 /* GWCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GWCell.h; sourceTree = "<group>"; };
@@ -72,8 +62,6 @@
 		C4FF54411FBEC5BB00F2DD89 /* GW_AutoLayoutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GW_AutoLayoutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4FF54441FBEC5BB00F2DD89 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C4FF54451FBEC5BB00F2DD89 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C4FF54471FBEC5BB00F2DD89 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C4FF54481FBEC5BB00F2DD89 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C4FF544B1FBEC5BB00F2DD89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C4FF544D1FBEC5BB00F2DD89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4FF54501FBEC5BB00F2DD89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -147,24 +135,16 @@
 				C402ADA11FE7B67C0023F092 /* GW_AutoLayoutKit */,
 				C4FF54441FBEC5BB00F2DD89 /* AppDelegate.h */,
 				C4FF54451FBEC5BB00F2DD89 /* AppDelegate.m */,
-				C4FF54471FBEC5BB00F2DD89 /* ViewController.h */,
-				C4FF54481FBEC5BB00F2DD89 /* ViewController.m */,
-				C46327A41FC692DA005E6A02 /* TestViewController.h */,
-				C46327A51FC692DA005E6A02 /* TestViewController.m */,
-				282672A321904B4600E1810E /* Test2ViewController.h */,
-				282672A421904B4600E1810E /* Test2ViewController.m */,
-				285B0BE0238654F40042E3B1 /* Test3Controller.h */,
-				285B0BE1238654F40042E3B1 /* Test3Controller.m */,
-				285B0BE32386550D0042E3B1 /* Test3Cell.h */,
-				285B0BE42386550D0042E3B1 /* Test3Cell.m */,
+				289B69A723ACB25600979939 /* MainTableViewController.h */,
+				289B69A823ACB25600979939 /* MainTableViewController.m */,
+				C46327A41FC692DA005E6A02 /* AutoHeightCellViewController.h */,
+				C46327A51FC692DA005E6A02 /* AutoHeightCellViewController.m */,
 				C4E923ED1FE1067300368331 /* GWCell.h */,
 				C4E923EE1FE1067300368331 /* GWCell.m */,
 				C409B08D1FE397F800D28505 /* GWTwoCell.h */,
 				C409B08E1FE397F800D28505 /* GWTwoCell.m */,
 				C46327A71FC69680005E6A02 /* testModel.h */,
 				C46327A81FC69680005E6A02 /* testModel.m */,
-				C46327AA1FC6968A005E6A02 /* testModel2.h */,
-				C46327AB1FC6968A005E6A02 /* testModel2.m */,
 				C4FF544A1FBEC5BB00F2DD89 /* Main.storyboard */,
 				C4FF544D1FBEC5BB00F2DD89 /* Assets.xcassets */,
 				C4FF544F1FBEC5BB00F2DD89 /* LaunchScreen.storyboard */,
@@ -311,16 +291,12 @@
 			files = (
 				C4E923EF1FE1067300368331 /* GWCell.m in Sources */,
 				C46327A91FC69680005E6A02 /* testModel.m in Sources */,
-				C4FF54491FBEC5BB00F2DD89 /* ViewController.m in Sources */,
-				C46327AC1FC6968A005E6A02 /* testModel2.m in Sources */,
-				282672A521904B4600E1810E /* Test2ViewController.m in Sources */,
-				285B0BE2238654F40042E3B1 /* Test3Controller.m in Sources */,
 				C4FF54541FBEC5BB00F2DD89 /* main.m in Sources */,
 				C402ADAD1FE7B67C0023F092 /* UITableViewCell+GW_AutoHeightForCell.m in Sources */,
-				285B0BE52386550D0042E3B1 /* Test3Cell.m in Sources */,
-				C46327A61FC692DA005E6A02 /* TestViewController.m in Sources */,
+				C46327A61FC692DA005E6A02 /* AutoHeightCellViewController.m in Sources */,
 				C402ADAF1FE7B67C0023F092 /* UIView+GW_AutoLayout.m in Sources */,
 				C409B08F1FE397F800D28505 /* GWTwoCell.m in Sources */,
+				289B69A923ACB25600979939 /* MainTableViewController.m in Sources */,
 				C4FF54461FBEC5BB00F2DD89 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

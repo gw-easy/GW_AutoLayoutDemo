@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface GWTwoCell : UITableViewCell
-- (void)setContent:(NSString *)content index:(NSInteger)index width:(CGFloat)width;
+- (void)setContent:(NSString *)content width:(CGFloat)width;
 @end
