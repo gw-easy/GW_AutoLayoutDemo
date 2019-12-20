@@ -35,8 +35,8 @@
 
 - (void)setContent:(NSString *)content width:(CGFloat)width{
     _content.text = content;
-    self.gw_TableViewWidth = width;
-    
+//    self.gw_TableViewWidth = width;
+    [self layoutIfNeeded];
 }
 
 

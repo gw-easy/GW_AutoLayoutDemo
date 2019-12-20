@@ -39,11 +39,10 @@
 
             
         [self.contentView addSubview:_tableView];
-        _tableView.GW_LeftSpace(0).GW_RightSpace(0).GW_TopSpaceToView(10, _content).GW_HeightAuto();
+        _tableView.GW_LeftSpace(100).GW_RightSpace(0).GW_TopSpaceToView(10, _content).GW_HeightAuto();
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.scrollEnabled = NO;
-        
         
         self.gw_CellBottomOffset = 10;
         
@@ -52,20 +51,33 @@
         
 //        NSLog(@"%f",self.width);
         
-        
+//        [_tableView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
+
+//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
+//    if (object == _tableView) {
+//        NSLog(@"height = %f",_tableView.contentSize.height);
+//        _tableView.GW_Height(_tableView.contentSize.height);
+//    }
+//}
+
+//- (void)dealloc{
+//    NSLog(@"dealloc");
+//    [_tableView removeObserver:self forKeyPath:@"contentSize"];
+//}
 
 - (void)setContent:(NSString *)content index:(NSInteger)index data:(NSMutableArray *)data{
     _content.text = content;
 
     self.dataArr = data;
+    _tableView.GW_Height(data.count * 44);
     [_tableView reloadData];
-    NSLog(@"height = %f",_tableView.contentSize.height);
-    [_tableView GW_Height:_tableView.contentSize.height];
-
-
+    [_tableView layoutIfNeeded];
+    _tableView.GW_Height(_tableView.contentSize.height);
+    NSLog(@"_tableView.contentSize.height = %f",_tableView.contentSize.height);
+//    _tableView.height_GW = _tableView.contentSize.height;
 }
 
 
@@ -97,7 +109,7 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    [cell setContent:@"bbbbbbbbbb-------bbbbbbbbbb--------bbbbbbbbbb-------bbbbbbbbbb--------bbbbbbbbbb-------bbbbbbbbbb--------bbbbbbbbbb-------bbbbbbbbbb--------bbbbbbbbbb-------bbbbbbbbbb--------" width:self.width_GW];
+    [cell setContent:@"bbbbbbbbbb-------bbbbbbbbbb--------bbbbbbbbbb-------bbbbbbbbbb--------bbbbbbbbbb-------bbbbbbbbbb--------bbbbbbbbbb-------bbbbbbbbbb--------bbbbbbbbbb-------bbbbbbbbbb--------" width:self.width_GW-100];
 
     return cell;
 }

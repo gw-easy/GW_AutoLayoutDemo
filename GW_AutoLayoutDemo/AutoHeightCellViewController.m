@@ -31,7 +31,7 @@
     
     self.navigationItem.rightBarButtonItem = rightItem;
     dateSourceArray = [NSMutableArray new];
-    for (int i = 0; i<1; i++) {
+    for (int i = 0; i<2; i++) {
         testModel *testM = [testModel new];
         testM.content = @"aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----";
         testM.opencell = YES;
@@ -46,7 +46,11 @@
     _tableView.delegate = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+    
+    
 }
+
+
 
 - (void)clickRefresh:(UIBarButtonItem *)sender {
     [_tableView reloadData];
@@ -88,8 +92,9 @@
 
 /// 自动计算cell高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    return [GWCell gw_CellHeightForIdentifier:NSStringFromClass([GWCell class]) indexPath:indexPath tableView:tableView];
+    CGFloat height =  [GWCell gw_CellHeightForIdentifier:NSStringFromClass([GWCell class]) indexPath:indexPath tableView:tableView];
+    NSLog(@"1111--------height = %f",height);
+    return height;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -98,7 +103,9 @@
     testModel *m = dateSourceArray[indexPath.row];
     m.opencell = !m.opencell;
      
-    [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:0];
+//    [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:0];
+    
+    [_tableView reloadData];
 
 }
 

@@ -22,7 +22,7 @@
 /// cell最底部视图与cell底部的间隙
 @property (nonatomic , assign) CGFloat  gw_CellBottomOffset;
 /// cell中包含的UITableView
-@property (nonatomic , strong) UITableView * gw_CellTableView;
+@property (nonatomic , weak) UITableView * gw_CellTableView;
 
 /// 指定tableview宽度（有助于提高自动计算效率-宽度必须准确，否则不能正确计算高度）
 @property (nonatomic , assign) CGFloat gw_TableViewWidth;

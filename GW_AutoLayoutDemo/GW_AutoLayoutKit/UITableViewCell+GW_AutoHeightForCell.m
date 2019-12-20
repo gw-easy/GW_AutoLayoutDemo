@@ -69,7 +69,7 @@
             for (NSInteger index = indexPath.row; index < moveRow; index++) {
                 id heightObject = dict[@(index).stringValue];
                 if (heightObject) {
-                    [newRowMap setValue:@([heightObject floatValue]) forKey:@(index + 1).stringValue];
+                    [newRowMap setValue:@([heightObject doubleValue]) forKey:@(index + 1).stringValue];
                     [dict removeObjectForKey:@(index).stringValue];
                 }
             }
@@ -103,7 +103,7 @@
 - (NSMutableDictionary *)handleCacheHeightRow:(NSMutableDictionary *)dict {
     if (dict) {
         NSArray<NSString *> * allKey = [dict.allKeys sortedArrayUsingComparator:^NSComparisonResult(NSString * obj1, NSString * obj2) {
-            return obj1.floatValue < obj2.floatValue;
+            return obj1.doubleValue < obj2.doubleValue;
         }];
         
         NSMutableDictionary *newDict = [NSMutableDictionary new];
@@ -205,10 +205,10 @@
 - (void)gw_MoveRowAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath {
     if (indexPath && newIndexPath && self.gw_CacheHeightDictionary) {
         NSMutableDictionary * indexPathMap = self.gw_CacheHeightDictionary[@(indexPath.section).stringValue];
-        CGFloat indexPathHeight = [indexPathMap[@(indexPath.row).stringValue] floatValue];
+        CGFloat indexPathHeight = [indexPathMap[@(indexPath.row).stringValue] doubleValue];
         
         NSMutableDictionary * newIndexPathMap = self.gw_CacheHeightDictionary[@(newIndexPath.section).stringValue];
-        CGFloat newIndexPathHeight = [newIndexPathMap[@(newIndexPath.row).stringValue] floatValue];
+        CGFloat newIndexPathHeight = [newIndexPathMap[@(newIndexPath.row).stringValue] doubleValue];
         
         indexPathMap[@(indexPath.row).stringValue] = @(newIndexPathHeight);
         newIndexPathMap[@(newIndexPath.row).stringValue] = @(indexPathHeight);
@@ -252,7 +252,7 @@
 
 - (CGFloat)gw_CellBottomOffset {
     id bottomOffset = objc_getAssociatedObject(self, _cmd);
-    return bottomOffset != nil ? [bottomOffset floatValue] : 0;
+    return bottomOffset != nil ? [bottomOffset doubleValue] : 0;
 }
 
 - (void)setGw_CellBottomViews:(NSArray *)gw_CellBottomViews {
@@ -277,21 +277,9 @@
     return objc_getAssociatedObject(self, _cmd);
 }
 
-- (UITableView *)gw_CellTableView {
-    return objc_getAssociatedObject(self, _cmd);
-}
-
-- (void)setGw_CellTableView:(UITableView *)gw_CellTableView {
-    objc_setAssociatedObject(self,
-                             @selector(gw_CellTableView),
-                             gw_CellTableView,
-                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-
 - (CGFloat)gw_TableViewWidth {
     id value = objc_getAssociatedObject(self, _cmd);
-    return value != nil ? [value floatValue] : 0;
+    return value != nil ? [value doubleValue] : 0;
 }
 
 - (void)setGw_TableViewWidth:(CGFloat)gw_TableViewWidth {
@@ -311,8 +299,9 @@
     NSMutableDictionary * sectionCacheHeightDictionary = tableView.gw_CacheHeightDictionary[cacheHeightKey];
     if (sectionCacheHeightDictionary != nil) {
         NSNumber * cellHeight = sectionCacheHeightDictionary[@(indexPath.row).stringValue];
+        
         if (cellHeight) {
-            return cellHeight.floatValue;
+            return cellHeight.doubleValue>0?cellHeight.doubleValue:0;
         }
     }else {
         sectionCacheHeightDictionary = [NSMutableDictionary dictionary];
@@ -339,7 +328,7 @@
     CGFloat tableViewWidth = cell.gw_TableViewWidth;
     if (tableViewWidth == 0) {
         [tableView layoutIfNeeded];
-        tableViewWidth = CGRectGetWidth(tableView.frame);
+        tableViewWidth = tableView.width_GW;
     }
     if (tableViewWidth == 0) return 0;
     cell.width_GW = tableViewWidth;
@@ -364,6 +353,9 @@
             bottomView = cellSubViews[0];
             for (int i = 1; i < cellSubViews.count; i++) {
                 UIView * view = cellSubViews[i];
+                if ([view isKindOfClass:[UITableView class]]) {
+                    NSLog(@"[UITableView class] = %@",view.heightConstraintValue);
+                }
                 if (CGRectGetMaxY(bottomView.frame) < CGRectGetMaxY(view.frame)) {
                     bottomView = view;
                 }
@@ -374,9 +366,12 @@
     }
     
     CGFloat cacheHeight = CGRectGetMaxY(bottomView.frame) + cell.gw_CellBottomOffset;
+    NSLog(@"cacheHeight = %f indexPath.row = %ld superV = %@",cacheHeight,(long)indexPath.row,NSStringFromClass([self class]) );
     [sectionCacheHeightDictionary setValue:@(cacheHeight) forKey:@(indexPath.row).stringValue];
     return cacheHeight>0?cacheHeight:0;
 }
+
+
 
 + (void)checkBottomView:(UITableViewCell *)cell{
     if (cell.gw_CellBottomView) {
