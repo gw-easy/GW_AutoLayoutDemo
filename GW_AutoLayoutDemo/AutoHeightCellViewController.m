@@ -35,6 +35,13 @@
         testModel *testM = [testModel new];
         testM.content = @"aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----aaaaaa-----";
         testM.opencell = YES;
+        NSMutableArray *seArr=  [NSMutableArray new];
+        for (int x = 0; x < 4; x++) {
+            testModel *testM2 = [testModel new];
+            testM2.content = @"bbbbbb-----bbbbbb-----bbbbbb-----bbbbbb-----bbbbbb-----bbbbbb-----bbbbbb-----bbbbbb-----bbbbbb-----bbbbbb-----bbbbbb-----bbbbbb-----bbbbbb-----bbbbbb-----";
+            [seArr addObject:testM2];
+        }
+        testM.dataArr = seArr;
         [dateSourceArray addObject:testM];
     }
 
@@ -45,7 +52,7 @@
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
+    [_tableView registerClass:[GWCell class] forCellReuseIdentifier:NSStringFromClass([GWCell class])];
     
     
 }
@@ -70,6 +77,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     GWCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([GWCell class])];
     if (!cell) {
         cell = [[GWCell alloc] initWithStyle:0 reuseIdentifier:NSStringFromClass([GWCell class])];
@@ -78,9 +86,9 @@
     cell.backgroundColor = [UIColor whiteColor];
     testModel *m = [dateSourceArray objectAtIndex:indexPath.row];
     if (m.opencell) {
-        [cell setContent:m.content index:indexPath.row data:nil];
+        [cell setContent:m.content index:indexPath data:nil];
     }else{
-        [cell setContent:m.content index:indexPath.row data:dateSourceArray];
+        [cell setContent:m.content index:indexPath data:m.dataArr];
     }
 
     return cell;
@@ -92,8 +100,10 @@
 
 /// 自动计算cell高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat height =  [GWCell gw_CellHeightForIdentifier:NSStringFromClass([GWCell class]) indexPath:indexPath tableView:tableView];
-    NSLog(@"1111--------height = %f",height);
+    NSLog(@"111111111111111111111111111111111111111111111111111111111111111111111111111111111111");
+//
+    CGFloat height =  [GWCell gw_CellHeightForIndexPath:indexPath tableView:tableView];
+    NSLog(@"GWCell : indexPath = %@ height = %f",indexPath,height);
     return height;
 }
 
@@ -106,7 +116,6 @@
 //    [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:0];
     
     [_tableView reloadData];
-
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -10,6 +10,6 @@
 
 @interface GWCell : UITableViewCell
 
-- (void)setContent:(NSString *)content index:(NSInteger)index data:(NSMutableArray *)data;
+- (void)setContent:(NSString *)content index:(NSIndexPath *)index data:(NSArray *)data;
 
 @end

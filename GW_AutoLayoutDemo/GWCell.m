@@ -13,12 +13,12 @@
     UILabel *  _title;
     
     UILabel *  _other;
-    UITableView * _tableView;
 }
 @property (strong, nonatomic)UILabel * content;
 
-@property (strong, nonatomic)NSMutableArray *dataArr;
+@property (strong, nonatomic)NSArray *dataArr;
 
+@property (strong ,nonatomic) UITableView *tableView;
 @end
 @implementation GWCell
 
@@ -28,7 +28,7 @@
         
         _content = [UILabel new];
         
-        _tableView = [[UITableView alloc] init];
+        
         _content.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1];
         
         
@@ -37,7 +37,19 @@
         _content.numberOfLines = 0;
         
 
-            
+        [self tableView];
+        
+        
+//        NSLog(@"%f",self.width);
+        
+//        [_tableView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
+    }
+    return self;
+}
+
+- (UITableView *)tableView{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] init];
         [self.contentView addSubview:_tableView];
         _tableView.GW_LeftSpace(100).GW_RightSpace(0).GW_TopSpaceToView(10, _content).GW_HeightAuto();
         _tableView.dataSource = self;
@@ -46,14 +58,11 @@
         
         self.gw_CellBottomOffset = 10;
         
-//        self.gw_TableViewWidth = [UIScreen mainScreen].bounds.size.width;
+        //        self.gw_TableViewWidth = [UIScreen mainScreen].bounds.size.width;
         self.gw_TableViewWidth = self.width_GW;
-        
-//        NSLog(@"%f",self.width);
-        
-//        [_tableView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
+        [_tableView registerClass:[GWTwoCell class] forCellReuseIdentifier:NSStringFromClass([GWTwoCell class])];
     }
-    return self;
+    return _tableView;
 }
 
 //- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
@@ -68,7 +77,7 @@
 //    [_tableView removeObserver:self forKeyPath:@"contentSize"];
 //}
 
-- (void)setContent:(NSString *)content index:(NSInteger)index data:(NSMutableArray *)data{
+- (void)setContent:(NSString *)content index:(NSIndexPath *)index data:(NSArray *)data{
     _content.text = content;
 
     self.dataArr = data;
@@ -76,8 +85,7 @@
     [_tableView reloadData];
     [_tableView layoutIfNeeded];
     _tableView.GW_Height(_tableView.contentSize.height);
-    NSLog(@"_tableView.contentSize.height = %f",_tableView.contentSize.height);
-//    _tableView.height_GW = _tableView.contentSize.height;
+    NSLog(@"_tableView.size = %@",NSStringFromCGSize(_tableView.contentSize) );
 }
 
 
@@ -90,7 +98,10 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat gg = [GWTwoCell gw_CellHeightForIdentifier:NSStringFromClass([GWTwoCell class]) indexPath:indexPath tableView:tableView];
+    NSLog(@"3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333");
+//    NSStringFromClass([GWTwoCell class])
+    
+    CGFloat gg = [GWTwoCell gw_CellHeightForIndexPath:indexPath tableView:tableView];
     return gg;
 }
 
