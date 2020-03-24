@@ -26,7 +26,7 @@
         _dataArr = [NSMutableArray new];
         NSArray *firstArr = @[
             [self createVCDateClassName:@"AutoHeightCellViewController" desStr:@"列表自动计算cell高度"],
-            [self createVCDateClassName:@"Test3Controller" desStr:@"列表自动计算cell高度"],
+            [self createVCDateClassName:@"TestViewController" desStr:@"测试UI"],
             
             
             

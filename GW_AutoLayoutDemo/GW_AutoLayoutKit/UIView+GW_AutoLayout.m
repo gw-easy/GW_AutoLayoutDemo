@@ -868,6 +868,22 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
     };
 }
 
+- (MaxWidth)GW_MaxWidth{
+    __weak typeof(self) weakSelf = self;
+    return ^(CGFloat value){
+        [[weakSelf GW_Width:value] GW_HandleConstraintsRelation:NSLayoutRelationLessThanOrEqual];
+        return weakSelf;
+    };
+}
+
+- (MixWidth)GW_MixWidth{
+    __weak typeof(self) weakSelf = self;
+    return ^(CGFloat value){
+        [[weakSelf GW_Width:value] GW_HandleConstraintsRelation:NSLayoutRelationGreaterThanOrEqual];
+        return weakSelf;
+    };
+}
+
 - (WidthEqualView)GW_WidthEqualView {
     __weak typeof(self) weakSelf = self;
     return ^(GW_VIEW * view) {
@@ -904,6 +920,22 @@ typedef NS_OPTIONS(NSUInteger, GWNibType) {
     __weak typeof(self) weakSelf = self;
     return ^() {
         [weakSelf GW_AutoHeight];
+        return weakSelf;
+    };
+}
+
+- (MaxHeight)GW_MaxHeight{
+    __weak typeof(self) weakSelf = self;
+    return ^(CGFloat value){
+        [[weakSelf GW_Height:value] GW_HandleConstraintsRelation:NSLayoutRelationLessThanOrEqual];
+        return weakSelf;
+    };
+}
+
+- (MixHeight)GW_MixHeight{
+    __weak typeof(self) weakSelf = self;
+    return ^(CGFloat value){
+        [[weakSelf GW_Height:value] GW_HandleConstraintsRelation:NSLayoutRelationGreaterThanOrEqual];
         return weakSelf;
     };
 }

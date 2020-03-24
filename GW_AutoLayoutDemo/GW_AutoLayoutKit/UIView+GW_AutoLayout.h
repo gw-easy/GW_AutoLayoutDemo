@@ -70,12 +70,16 @@ typedef GW_VIEW * (^BottomSpaceEqualViewOffset)(GW_VIEW * view, CGFloat offset);
 
 typedef GW_VIEW * (^Width)(CGFloat value);
 typedef GW_VIEW * (^WidthAuto)(void);
+typedef GW_VIEW * (^MaxWidth)(CGFloat value);
+typedef GW_VIEW * (^MixWidth)(CGFloat value);
 typedef GW_VIEW * (^WidthEqualView)(GW_VIEW * view);
 typedef GW_VIEW * (^WidthEqualViewRatio)(GW_VIEW * view, CGFloat ratio);
 typedef GW_VIEW * (^WidthHeightRatio)(CGFloat ratio);
 
 typedef GW_VIEW * (^Height)(CGFloat value);
 typedef GW_VIEW * (^HeightAuto)(void);
+typedef GW_VIEW * (^MaxHeight)(CGFloat value);
+typedef GW_VIEW * (^MixHeight)(CGFloat value);
 typedef GW_VIEW * (^HeightEqualView)(GW_VIEW * view);
 typedef GW_VIEW * (^HeightEqualViewRatio)(GW_VIEW * view, CGFloat ratio);
 typedef GW_VIEW * (^HeightWidthRatio)(CGFloat ratio);
@@ -189,6 +193,10 @@ typedef GW_VIEW * (^BoundsEqual)(GW_VIEW * view);
 @property (nonatomic ,copy , readonly)Width GW_Width;
 /// 宽度自动()
 @property (nonatomic ,copy , readonly)WidthAuto GW_WidthAuto;
+/// 最大宽度
+@property (nonatomic ,copy , readonly)MaxWidth GW_MaxWidth;
+/// 最小宽度
+@property (nonatomic ,copy , readonly)MixWidth GW_MixWidth;
 /// 宽度等于视图view(GW_VIEW * view)
 @property (nonatomic ,copy , readonly)WidthEqualView GW_WidthEqualView;
 /// 宽度等于视图view 参照比例Ratio(GW_VIEW * view ,CGFloat ratio)
@@ -200,6 +208,10 @@ typedef GW_VIEW * (^BoundsEqual)(GW_VIEW * view);
 @property (nonatomic ,copy , readonly)Height GW_Height;
 /// 高度自动()
 @property (nonatomic ,copy , readonly)HeightAuto GW_HeightAuto;
+/// 最大高度
+@property (nonatomic ,copy , readonly)MaxHeight GW_MaxHeight;
+/// 最小高度
+@property (nonatomic ,copy , readonly)MixHeight GW_MixHeight;
 /// 高度等于视图view(GW_VIEW * view)
 @property (nonatomic ,copy , readonly)HeightEqualView GW_HeightEqualView;
 /// 高度等于视图view 参照比例Ratio(GW_VIEW * view ,CGFloat ratio)
