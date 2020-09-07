@@ -102,12 +102,8 @@ typedef GW_VIEW * (^BoundsEqual)(GW_VIEW * view);
 
 @interface GW_VIEW (GW_AutoLayout)
 
-#pragma mark - api version ~ 2.0 -
+#pragma mark - api version
 
-/// 当前约束小于等于
-@property (nonatomic ,copy , readonly)LessOrEqual GW_LessOrEqual;
-/// 当前约束大于等于
-@property (nonatomic ,copy , readonly)GreaterOrEqual GW_GreaterOrEqual;
 /// 重置缓存约束
 @property (nonatomic ,copy , readonly)ResetConstraintAttribute GW_ResetConstraint;
 /// 清除所有约束
@@ -118,6 +114,11 @@ typedef GW_VIEW * (^BoundsEqual)(GW_VIEW * view);
 @property (nonatomic ,copy , readonly)RemoveConstraintFromViewAttribute GW_RemoveFromLayoutAttrs;
 /// 移除约束从关联视图上(GW_VIEW * toView, NSLayoutAttribute attributes, ...)
 @property (nonatomic ,copy , readonly)RemoveConstraintToViewAttribute GW_RemoveToLayoutAttrs;
+
+/// 当前约束小于等于
+@property (nonatomic ,copy , readonly)LessOrEqual GW_LessOrEqual;
+/// 当前约束大于等于
+@property (nonatomic ,copy , readonly)GreaterOrEqual GW_GreaterOrEqual;
 
 /// 设置当前约束的低优先级
 @property (nonatomic ,copy , readonly)PriorityLow GW_PriorityLow;
@@ -336,6 +337,8 @@ typedef GW_VIEW * (^BoundsEqual)(GW_VIEW * view);
 @property (assign, nonatomic, readonly) CGFloat centerYLessConstraintValue;
 @property (assign, nonatomic, readonly) CGFloat centerYGreaterConstraintValue;
 
+//获取视图当前布局的size
+@property (assign, nonatomic, readonly) CGSize getViewRealSize;
 /**
  重置缓存的约束,该方法在当前视图对象移除从父视图上可能需要调用清除与父视图之前旧约束缓存对象
  
@@ -1055,133 +1058,5 @@ typedef GW_VIEW * (^BoundsEqual)(GW_VIEW * view);
 @end
 
 #pragma mark - frame
-@interface UIView (GWFrame)<CAAnimationDelegate>
-/**
-* 左 frame.origin.x
-*
-* Sets frame.origin.x = left_GW
-*/
-@property (nonatomic) CGFloat left_GW;
-
-/**
- * 上 frame.origin.y
- *
- * Sets frame.origin.y = top_GW
- */
-@property (nonatomic) CGFloat top_GW;
-
-/**
- * 右 frame.origin.x + frame.size.width
- *
- * Sets frame.origin.x = right - frame.size.width
- */
-@property (nonatomic) CGFloat right_GW;
-
-/**
- * 下 frame.origin.y + frame.size.height
- *
- * Sets frame.origin.y = bottom - frame.size.height
- */
-@property (nonatomic) CGFloat bottom_GW;
-
-/**
- * 宽 frame.size.width
- *
- * Sets frame.size.width = width
- */
-@property (nonatomic) CGFloat width_GW;
-
-/**
- * 高 frame.size.height
- *
- * Sets frame.size.height = height
- */
-@property (nonatomic) CGFloat height_GW;
-
-/**
- * Shortcut for center.x
- *
- * Sets center.x = centerX
- */
-@property (nonatomic) CGFloat centerX_GW;
-
-/**
- * Shortcut for center.y
- *
- * Sets center.y = centerY
- */
-@property (nonatomic) CGFloat centerY_GW;
-/**
- * Shortcut for frame.origin
- */
-@property (nonatomic) CGPoint origin_GW;
-
-/**
- * Shortcut for frame.size
- */
-@property (nonatomic) CGSize size_GW;
-
-/// 获取视图最大x
-@property (nonatomic, assign)CGFloat maxX_GW;
-/// 获取视图最大y
-@property (nonatomic, assign)CGFloat maxY_GW;
-/// 获取视图中间x
-@property (nonatomic, assign)CGFloat midX_GW;
-/// 获取视图中间y
-@property (nonatomic, assign)CGFloat midY_GW;
-
-/// 获取当前视图的控制器
-- (UIViewController *)viewController_GW;
-@end
 
 
-//是否有安全区域 iphoneX以上版本
-#define IS_HAS_SafeArea_GW ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? (CGSizeEqualToSize(CGSizeMake(1125, 2436), [[[UIScreen mainScreen] currentMode] size]) || CGSizeEqualToSize(CGSizeMake(1242, 2688), [[[UIScreen mainScreen] currentMode] size]) || CGSizeEqualToSize(CGSizeMake(828, 1792), [[[UIScreen mainScreen] currentMode] size])) : NO)
-//是否是ipad
-#define IS_PAD_GW ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
-//是否是手机
-#define IS_IPHONE_GW (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-//底部tab高度
-#define TabHeight_GW [[NSUserDefaults standardUserDefaults] doubleForKey:GW_TAB_HEIGHT]
-//底部tabbar高度
-#define TabbarHeight_GW [[NSUserDefaults standardUserDefaults] doubleForKey:GW_TAB_BAR_HEIGHT]
-//导航栏高度
-#define NavHeight_GW [[NSUserDefaults standardUserDefaults] doubleForKey:GW_NAV_HEIGHT]
-//导航栏navbar高度
-#define NavBarHeight_GW [[NSUserDefaults standardUserDefaults] doubleForKey:GW_NAV_BAR_HEIGHT]
-//状态栏高度
-#define StatusBarHeight_GW [[NSUserDefaults standardUserDefaults] doubleForKey:GW_STATUS_HEIGHT]
-//home indicator（home指示器）
-#define HomeIndicatorHeight_GW (IS_HAS_SafeArea_GW ? 34 : 0)
-//横屏状态下左右安全边距
-#define Landscape_SafeArea_Width_GW  (IS_HAS_SafeArea_GW ? 44 : 0)
-
-//导航栏高度
-static NSString *const GW_NAV_HEIGHT = @"GW_NAV_HEIGHT";
-//导航栏-navbar高度
-static NSString *const GW_NAV_BAR_HEIGHT = @"GW_NAV_BAR_HEIGHT";
-//导航栏-状态栏高度
-static NSString *const GW_STATUS_HEIGHT = @"GW_STATUS_HEIGHT";
-//底部tab高度
-static NSString *const GW_TAB_HEIGHT = @"GW_TAB_HEIGHT";
-//底部tabbar高度
-static NSString *const GW_TAB_BAR_HEIGHT = @"GW_TAB_BAR_HEIGHT";
-
-
-#pragma mark - view - Present
-@interface UIView (GWView)
-
-//弹出一个类似present效果的窗口
-- (void)presentView:(UIView*)view animated:(BOOL)animated complete:(void(^)(void)) complete;
-
-//获取一个view上正在被present的view
-- (UIView *)presentedView;
-
-//移除present出去的窗口
-- (void)dismissPresentedView:(BOOL)animated complete:(void(^)(void)) complete;
-
-//这个是被present的窗口本身的方法
-//如果自己是被present出来的，消失掉
-- (void)hideSelf:(BOOL)animated complete:(void(^)(void)) complete;
-
-@end

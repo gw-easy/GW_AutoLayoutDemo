@@ -20,4 +20,5 @@ FOUNDATION_EXPORT const unsigned char GW_AutoLayoutVersionString[];
 #import "UITableViewCell+GW_AutoHeightForCell.h"
 #import "UIView+GW_AutoLayout.h"
 #import "GW_AutoLayoutUtilities.h"
-
+#import "UIView+GWFrame.h"
+#import "UIView+GWTools.h"
